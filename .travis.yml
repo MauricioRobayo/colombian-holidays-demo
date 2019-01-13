@@ -1,0 +1,17 @@
+language: node_js
+notifications:
+  email:
+    on_failure: always
+node_js:
+  - "8.10"
+cache: npm
+script:
+  - npm test
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: npm run deploy
+  on:
+    branch: master
+after_success:
+  - npx semantic-release
