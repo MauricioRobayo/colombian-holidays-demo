@@ -20,6 +20,7 @@ const HolidayListWrapper = styled.div`
     padding: 0;
     margin: 0;
     li {
+      padding: 0.75em;
       border-bottom: 1px solid ${({ theme }) => theme.greylighter};
       h3 {
         margin: 0 0.75rem 0.25rem 0;
@@ -28,9 +29,6 @@ const HolidayListWrapper = styled.div`
         display: block;
         overflow: hidden;
       }
-    }
-    li.active {
-      padding: 0.75em;
     }
     li.inactive {
       padding: 0.5rem 0.75rem 0.25rem;
@@ -52,14 +50,20 @@ const HolidaysList = ({ holidays }) => {
     <HolidayListWrapper>
       <ul>
         {holidays.map((holiday, index, array) => {
-          const active = new Date(holiday.date) >= date;
+          // Ajustamos a la zona horaria de Colombia
+          const holidayDate = new Date(`${holiday.date}T05:00`);
+          const currentYear = holidayDate.getFullYear() === date.getFullYear();
+          const inactive = holidayDate < date && currentYear;
+
+          console.log(holidayDate, date);
           let current = false;
           if (index) {
-            const previousIsActive = new Date(array[index - 1].date) >= date;
-            current = active !== previousIsActive;
+            const previousIsActive =
+              new Date(`${array[index - 1].date}T05:00`) < date;
+            current = currentYear && inactive !== previousIsActive;
           }
           return (
-            <li key={holiday.name} className={active ? "active" : "inactive"}>
+            <li key={holiday.name} className={inactive && "inactive"}>
               <h3>{holiday.name}</h3>
               <PrettyDate date={holiday.date} />
               {current && <Countdown date={holiday.date} />}
