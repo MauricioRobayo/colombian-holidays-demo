@@ -54,8 +54,6 @@ const HolidaysList = ({ holidays }) => {
           const holidayDate = new Date(`${holiday.date}T05:00`);
           const currentYear = holidayDate.getFullYear() === date.getFullYear();
           const inactive = holidayDate < date && currentYear;
-
-          console.log(holidayDate, date);
           let current = false;
           if (index) {
             const previousIsActive =
@@ -63,7 +61,7 @@ const HolidaysList = ({ holidays }) => {
             current = currentYear && inactive !== previousIsActive;
           }
           return (
-            <li key={holiday.name} className={inactive && "inactive"}>
+            <li key={holiday.name} className={inactive ? "inactive" : ""}>
               <h3>{holiday.name}</h3>
               <PrettyDate date={holiday.date} />
               {current && <Countdown date={holiday.date} />}
