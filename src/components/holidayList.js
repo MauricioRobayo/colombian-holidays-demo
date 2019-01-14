@@ -23,7 +23,7 @@ const HolidayListWrapper = styled.div`
       padding: 0.75em;
       border-bottom: 1px solid ${({ theme }) => theme.greylighter};
       h3 {
-        margin: 0 0.75rem 0.25rem 0;
+        margin: 0 0 0.25rem;
       }
       time {
         display: block;
