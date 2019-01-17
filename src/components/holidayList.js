@@ -31,9 +31,14 @@ const HolidayListWrapper = styled.div`
       }
     }
     li.inactive {
-      padding: 0.5rem 0.75rem 0.25rem;
+      padding: 0.25rem 0.75rem 0.15rem;
       background: ${({ theme }) => theme.inactiveBG};
       color: ${({ theme }) => theme.inactiveFG};
+      font-size: 0.85rem;
+      h3 {
+        font-weight: normal;
+        margin-bottom: 0.15rem;
+      }
       time {
         animation: ${slideOut} 0.25s ease-out 0.5s forwards;
       }
