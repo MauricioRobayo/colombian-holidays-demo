@@ -24,9 +24,19 @@ class CountDown extends Component {
   }
   updateRemainingTime() {}
   render() {
-    const rtf = new Intl.RelativeTimeFormat("es-CO", {
-      numeric: this.props.numeric
-    });
+    const rtf =
+      typeof Intl.RelativeTimeFormat === "function"
+        ? new Intl.RelativeTimeFormat("es", {
+            numeric: this.props.numeric
+          })
+        : {
+            format(remainingDays) {
+              if (remainingDays === 1) {
+                return "mañana";
+              }
+              return `faltan ${remainingDays} días`;
+            }
+          };
     return (
       <CountDownWrapper>
         {rtf.format(this.state.remainingDays, "day")}
