@@ -9,9 +9,6 @@ const CountDownWrapper = styled.div`
   color: white;
   border-radius: 4px;
   background-color: ${({ theme }) => theme.success};
-  span {
-    font-weight: bold;
-  }
 `;
 
 class CountDown extends Component {
@@ -27,14 +24,19 @@ class CountDown extends Component {
   }
   updateRemainingTime() {}
   render() {
+    const rtf = new Intl.RelativeTimeFormat("es-CO", {
+      numeric: this.props.numeric
+    });
     return (
       <CountDownWrapper>
-        En
-        <span> {this.state.remainingDays} </span>
-        {this.state.remainingDays === 1 ? "dia" : "dias"}
+        {rtf.format(this.state.remainingDays, "day")}
       </CountDownWrapper>
     );
   }
 }
+
+CountDown.defaultProps = {
+  numeric: "auto"
+};
 
 export default CountDown;
