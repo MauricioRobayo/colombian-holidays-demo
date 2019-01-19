@@ -1,5 +1,5 @@
 {
-  "name": "pascua.archemiro.com",
+  "name": "www.feriadoscolombia.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "publish": "gh-pages --dist build --user 'Mauricio Robayo <2121481+archemiro@users.noreply.github.com>' --repo https://${GITHUB_TOKEN}@github.com/archemiro/pascua.archemiro.com.git",
+    "publish": "gh-pages --dist build --user 'Mauricio Robayo <2121481+archemiro@users.noreply.github.com>' --repo https://${GITHUB_TOKEN}@github.com/archemiro/www.feriadoscolombia.com.git",
     "deploy": "run-s build publish"
   },
   "eslintConfig": {
@@ -35,13 +35,13 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/archemiro/pascua.archemiro.com.git"
+    "url": "git+https://github.com/archemiro/www.feriadoscolombia.com.git"
   },
   "keywords": [],
   "author": "Mauricio Robayo <archemiro@gmail.com> (https://www.archemiro.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/archemiro/pascua.archemiro.com/issues"
+    "url": "https://github.com/archemiro/www.feriadoscolombia.com/issues"
   },
-  "homepage": "https://pascua.archemiro.com"
+  "homepage": "https://www.feriadoscolombia.com"
 }
