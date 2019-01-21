@@ -4,9 +4,9 @@ import styled, {
   createGlobalStyle,
   ThemeProvider
 } from "styled-components/macro";
-import Footer from "./components/footer";
-import HolidaysList from "./components/holidayList";
-import YearSelector from "./components/yearSelector";
+import Footer from "./components/Footer";
+import HolidaysList from "./components/HolidayList";
+import YearSelector from "./components/YearSelector";
 
 const defaultTheme = {
   dark: "#444",
