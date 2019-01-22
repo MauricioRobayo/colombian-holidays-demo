@@ -18,4 +18,4 @@ PrettyDate.defaultProps = {
   day: "numeric"
 };
 
-export { PrettyDate };
+export default PrettyDate;

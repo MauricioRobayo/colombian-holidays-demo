@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components/macro";
 import Countdown from "./Countdown";
-import { PrettyDate } from "./Formatter";
+import PrettyDate from "./PrettyDate";
 
 const slideIn = keyframes`
   from {height: 0;}
