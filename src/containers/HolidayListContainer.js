@@ -6,7 +6,7 @@ class HolidaysListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      holidays: this.getHolidays(this.props.selectedYear)
+      holidays: this.getHolidays(props.selectedYear)
     };
   }
   getHolidays = year =>
