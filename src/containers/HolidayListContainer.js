@@ -12,7 +12,6 @@ class HolidaysListContainer extends Component {
   getHolidays = year =>
     getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
   componentDidUpdate(prevProps) {
-    console.log(prevProps, this.props);
     if (this.props.selectedYear !== prevProps.selectedYear) {
       this.setState({ holidays: this.getHolidays(this.props.selectedYear) });
     }
