@@ -44,9 +44,6 @@ const AppWrapper = styled.div`
     margin-bottom: 1rem;
     border-bottom: 6px solid ${defaultTheme.danger};
     color: white;
-    > div {
-      margin: 1rem auto;
-    }
   }
   > main {
     width: ${defaultTheme.width};
@@ -79,17 +76,15 @@ class App extends Component {
         <AppWrapper>
           <GlobalStyle />
           <header>
-            <div>
-              <h1>
-                Festivos en Colombia{" "}
-                <YearSelector
-                  currentYear={this.state.currentYear}
-                  startYear={this.state.startYear}
-                  yearsPastCurrentYear={this.state.yearsPastCurrentYear}
-                  onChange={this.onYearChange}
-                />
-              </h1>
-            </div>
+            <h1>
+              Festivos en Colombia{" "}
+              <YearSelector
+                currentYear={this.state.currentYear}
+                startYear={this.state.startYear}
+                yearsPastCurrentYear={this.state.yearsPastCurrentYear}
+                onChange={this.onYearChange}
+              />
+            </h1>
           </header>
           <main>
             <HolidaysListContainer selectedYear={this.state.selectedYear} />
