@@ -1,11 +1,10 @@
-import { getAllHolidays } from "pascua";
 import React, { Component } from "react";
 import styled, {
   createGlobalStyle,
   ThemeProvider
 } from "styled-components/macro";
 import Footer from "./components/Footer";
-import HolidaysList from "./components/HolidayList";
+import HolidaysListContainer from "./containers/HolidayListContainer";
 import YearSelector from "./components/YearSelector";
 
 const defaultTheme = {
@@ -63,21 +62,14 @@ class App extends Component {
       startYear: 1984,
       currentYear: new Date().getFullYear(),
       selectedYear: new Date().getFullYear(),
-      yearsPastCurrentYear: 10,
-      holidays: this.getHolidays(this.currentYear)
+      yearsPastCurrentYear: 10
     };
     this.onYearChange = this.onYearChange.bind(this);
   }
 
-  getHolidays = year =>
-    getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
-
   onYearChange(event) {
-    const selectedYear = event.target.value;
-    const holidays = this.getHolidays(selectedYear);
     this.setState({
-      selectedYear,
-      holidays
+      selectedYear: event.target.value
     });
   }
 
@@ -100,10 +92,7 @@ class App extends Component {
             </div>
           </header>
           <main>
-            <HolidaysList
-              holidays={this.state.holidays}
-              onChange={this.onYearChange}
-            />
+            <HolidaysListContainer selectedYear={this.state.selectedYear} />
           </main>
           <Footer />
         </AppWrapper>
