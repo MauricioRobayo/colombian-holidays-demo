@@ -3,10 +3,9 @@ import styled, {
   createGlobalStyle,
   ThemeProvider
 } from "styled-components/macro";
+import Header from "./components/Header";
+import Main from "./components/Main"
 import Footer from "./components/Footer";
-import HolidaysListContainer from "./containers/HolidayListContainer";
-import YearSelector from "./components/YearSelector";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
 
 const defaultTheme = {
   dark: "#444",
@@ -39,20 +38,6 @@ const GlobalStyle = createGlobalStyle`
 const AppWrapper = styled.div`
   text-align: center;
   margin: auto;
-  > header {
-    background-color: ${defaultTheme.primary};
-    padding: 2rem;
-    margin-bottom: 1rem;
-    border-bottom: 6px solid ${defaultTheme.danger};
-    color: white;
-     font-size: 2rem; 
-    }
-  }
-  > main {
-    width: ${defaultTheme.width};
-    max-width: ${defaultTheme.maxWidth};
-    margin: auto;
-  }
 `;
 
 class App extends Component {
@@ -83,19 +68,13 @@ class App extends Component {
       <ThemeProvider theme={defaultTheme}>
         <AppWrapper>
           <GlobalStyle />
-          <header>
-            <h1>
-              Festivos en Colombia {this.state.selectedYear}
-            </h1>
-            <YearSelector
-              years={this.state.years}
-              currentYear={this.state.currentYear}
-              onChange={this.onYearChange}
-            />
-          </header>
-          <main>
-            <HolidaysListContainer selectedYear={this.state.selectedYear} />
-          </main>
+          <Header
+            selectedYear={this.state.selectedYear}
+            years={this.state.years}
+            currentYear={this.state.currentYear}
+            onChange={this.onYearChange}
+          />
+          <Main selectedYear={this.state.selectedYear} />
           <Footer />
         </AppWrapper>
       </ThemeProvider>
