@@ -6,6 +6,7 @@ import styled, {
 import Footer from "./components/Footer";
 import HolidaysListContainer from "./containers/HolidayListContainer";
 import YearSelector from "./components/YearSelector";
+import { BrowserRouter, Route, withRouter } from "react-router-dom";
 
 const defaultTheme = {
   dark: "#444",
@@ -44,6 +45,8 @@ const AppWrapper = styled.div`
     margin-bottom: 1rem;
     border-bottom: 6px solid ${defaultTheme.danger};
     color: white;
+     font-size: 2rem; 
+    }
   }
   > main {
     width: ${defaultTheme.width};
@@ -55,18 +58,23 @@ const AppWrapper = styled.div`
 class App extends Component {
   constructor(props) {
     super(props);
+    const startYear = 1984;
+    const currentYear = new Date().getFullYear()
+    const yearsPastCurrentYear = 10
     this.state = {
-      startYear: 1984,
-      currentYear: new Date().getFullYear(),
+      currentYear,
       selectedYear: new Date().getFullYear(),
-      yearsPastCurrentYear: 10
+      years: Array(currentYear - startYear + yearsPastCurrentYear + 1)
+        .fill(startYear)
+        .map((year, index) => year + index)
     };
     this.onYearChange = this.onYearChange.bind(this);
   }
 
   onYearChange(event) {
+    const { value } = event.target
     this.setState({
-      selectedYear: event.target.value
+      selectedYear: value
     });
   }
 
@@ -77,14 +85,13 @@ class App extends Component {
           <GlobalStyle />
           <header>
             <h1>
-              Festivos en Colombia{" "}
-              <YearSelector
-                currentYear={this.state.currentYear}
-                startYear={this.state.startYear}
-                yearsPastCurrentYear={this.state.yearsPastCurrentYear}
-                onChange={this.onYearChange}
-              />
+              Festivos en Colombia {this.state.selectedYear}
             </h1>
+            <YearSelector
+              years={this.state.years}
+              currentYear={this.state.currentYear}
+              onChange={this.onYearChange}
+            />
           </header>
           <main>
             <HolidaysListContainer selectedYear={this.state.selectedYear} />
