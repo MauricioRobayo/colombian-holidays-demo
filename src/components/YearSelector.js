@@ -39,18 +39,14 @@ const YearSelectorWrapper = styled.div`
   }
 `;
 
-const YearSelector = ({
-  currentYear,
-  years,
-  onChange
-}) => (
+const YearSelector = props => (
   <YearSelectorWrapper>
-    <select defaultValue={currentYear} onChange={onChange}>
-        {years.map(year => (
-          <option key={year} value={year}>
-            {year}
-          </option>
-        ))}
+    <select value={props.selectedYear} onChange={props.onChange}>
+      {props.years.map(year => (
+        <option key={year} value={year}>
+          {year}
+        </option>
+      ))}
     </select>
   </YearSelectorWrapper>
 );

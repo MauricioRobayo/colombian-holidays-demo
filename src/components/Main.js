@@ -10,7 +10,7 @@ const MainWrapper = styled.main`
 
 const Main = props => (
   <MainWrapper>
-    <HolidaysListContainer selectedYear={props.selectedYear} />
+    <HolidaysListContainer yearChange={props.yearChange} selectedYear={props.match.params.year} />
   </MainWrapper>
 )
 

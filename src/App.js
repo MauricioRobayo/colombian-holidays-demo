@@ -3,8 +3,9 @@ import styled, {
   createGlobalStyle,
   ThemeProvider
 } from "styled-components/macro";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Header from "./components/Header";
-import Main from "./components/Main"
+import Main from "./components/Main";
 import Footer from "./components/Footer";
 
 const defaultTheme = {
@@ -40,43 +41,59 @@ const AppWrapper = styled.div`
   margin: auto;
 `;
 
+const Menu = withRouter(Header);
+
 class App extends Component {
   constructor(props) {
     super(props);
     const startYear = 1984;
-    const currentYear = new Date().getFullYear()
-    const yearsPastCurrentYear = 10
+    const selectedYear = new Date().getFullYear();
+    const yearsPastCurrentYear = 10;
+    const years = Array(selectedYear - startYear + yearsPastCurrentYear + 1)
+      .fill(startYear)
+      .map((year, index) => year + index);
     this.state = {
-      currentYear,
-      selectedYear: new Date().getFullYear(),
-      years: Array(currentYear - startYear + yearsPastCurrentYear + 1)
-        .fill(startYear)
-        .map((year, index) => year + index)
+      selectedYear,
+      years
     };
-    this.onYearChange = this.onYearChange.bind(this);
+    this.yearChange = this.yearChange.bind(this);
   }
 
-  onYearChange(event) {
-    const { value } = event.target
+  yearChange(year) {
     this.setState({
-      selectedYear: value
+      selectedYear: year
     });
   }
 
   render() {
     return (
       <ThemeProvider theme={defaultTheme}>
-        <AppWrapper>
-          <GlobalStyle />
-          <Header
-            selectedYear={this.state.selectedYear}
-            years={this.state.years}
-            currentYear={this.state.currentYear}
-            onChange={this.onYearChange}
-          />
-          <Main selectedYear={this.state.selectedYear} />
-          <Footer />
-        </AppWrapper>
+        <Router>
+          <AppWrapper>
+            <GlobalStyle />
+            <Menu
+              selectedYear={this.state.selectedYear}
+              years={this.state.years}
+              yearChange={this.yearChange}
+            />
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <Main
+                  {...props}
+                  yearChange={this.yearChange}
+                  selectedYear={this.state.selectedYear}
+                />
+              )}
+            />
+            <Route
+              path="/:year"
+              render={props => <Main {...props} yearChange={this.yearChange} />}
+            />
+            <Footer />
+          </AppWrapper>
+        </Router>
       </ThemeProvider>
     );
   }
