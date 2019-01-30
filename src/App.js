@@ -3,10 +3,16 @@ import styled, {
   createGlobalStyle,
   ThemeProvider
 } from "styled-components/macro";
-import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  withRouter,
+  Switch
+} from "react-router-dom";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 
 const defaultTheme = {
   dark: "#444",
@@ -76,21 +82,26 @@ class App extends Component {
               years={this.state.years}
               yearChange={this.yearChange}
             />
-            <Route
-              exact
-              path="/"
-              render={props => (
-                <Main
-                  {...props}
-                  yearChange={this.yearChange}
-                  selectedYear={this.state.selectedYear}
-                />
-              )}
-            />
-            <Route
-              path="/:year"
-              render={props => <Main {...props} yearChange={this.yearChange} />}
-            />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={props => (
+                  <Main
+                    {...props}
+                    yearChange={this.yearChange}
+                    selectedYear={this.state.selectedYear}
+                  />
+                )}
+              />
+              <Route
+                path="/:year([1-2]\d{3})"
+                render={props => (
+                  <Main {...props} yearChange={this.yearChange} />
+                )}
+              />
+              <Route component={NotFound} />
+            </Switch>
             <Footer />
           </AppWrapper>
         </Router>
