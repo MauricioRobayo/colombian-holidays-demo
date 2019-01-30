@@ -16,7 +16,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages --dist build --user 'Mauricio Robayo <2121481+archemiro@users.noreply.github.com>' --repo https://${GITHUB_TOKEN}@github.com/archemiro/www.feriadoscolombia.com.git"
+    "deploy": "aws s3 sync build s3://www.feriadoscolombia.com --acl public-read --delete"
   },
   "eslintConfig": {
     "extends": "react-app"
