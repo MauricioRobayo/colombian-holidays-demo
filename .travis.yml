@@ -4,15 +4,15 @@ notifications:
     on_failure: always
 node_js:
   - "8.10"
+before_install:
+  - pip install --user awscli
 script:
   - npm run build
   - npm test
 deploy:
   skip_cleanup: true
   provider: script
-  script:
-    - pip install --user awscli
-    - npm run deploy
+  script: npm run deploy
   on:
     branch: master
 after_success:
