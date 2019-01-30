@@ -10,7 +10,9 @@ script:
 deploy:
   skip_cleanup: true
   provider: script
-  script: npm run deploy
+  script:
+    - pip install --user awscli
+    - npm run deploy
   on:
     branch: master
 after_success:
