@@ -55,10 +55,13 @@ class App extends Component {
     const startYear = 1984;
     const selectedYear = new Date().getFullYear();
     const yearsPastCurrentYear = 10;
+    const maxYear = selectedYear + yearsPastCurrentYear;
     const years = Array(selectedYear - startYear + yearsPastCurrentYear + 1)
       .fill(startYear)
       .map((year, index) => year + index);
     this.state = {
+      startYear,
+      maxYear,
       selectedYear,
       years
     };
@@ -97,7 +100,12 @@ class App extends Component {
               <Route
                 path="/:year([1-2]\d{3})"
                 render={props => (
-                  <Main {...props} yearChange={this.yearChange} />
+                  <Main
+                    {...props}
+                    yearChange={this.yearChange}
+                    maxYear={this.state.maxYear}
+                    startYear={this.state.startYear}
+                  />
                 )}
               />
               <Route component={NotFound} />

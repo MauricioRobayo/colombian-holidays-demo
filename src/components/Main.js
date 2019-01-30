@@ -15,6 +15,8 @@ const Main = props => (
       <HolidaysListContainer
         yearChange={props.yearChange}
         selectedYear={props.selectedYear || props.match.params.year}
+        maxYear={props.maxYear}
+        startYear={props.startYear}
       />
     </ErrorBoundaryContainer>
   </MainWrapper>
