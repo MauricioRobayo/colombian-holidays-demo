@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import HolidaysListContainer from "../containers/HolidayListContainer";
-import ErrorBoundaryContainer from "../containers/ErrorBoundaryContainer";
 
 const MainWrapper = styled.main`
   width: ${props => props.theme.width};
@@ -11,14 +10,11 @@ const MainWrapper = styled.main`
 
 const Main = props => (
   <MainWrapper>
-    <ErrorBoundaryContainer>
-      <HolidaysListContainer
-        yearChange={props.yearChange}
-        selectedYear={props.selectedYear || props.match.params.year}
-        maxYear={props.maxYear}
-        startYear={props.startYear}
-      />
-    </ErrorBoundaryContainer>
+    <HolidaysListContainer
+      onYearChange={props.onYearChange}
+      selectedYear={props.selectedYear}
+      isValidYear={props.isValidYear}
+    />
   </MainWrapper>
 );
 

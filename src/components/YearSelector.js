@@ -39,16 +39,27 @@ const YearSelectorWrapper = styled.div`
   }
 `;
 
-const YearSelector = props => (
-  <YearSelectorWrapper>
-    <select value={props.selectedYear} onChange={props.onChange}>
-      {props.years.map(year => (
-        <option key={year} value={year}>
-          {year}
-        </option>
-      ))}
-    </select>
-  </YearSelectorWrapper>
-);
+const YearSelector = props => {
+  const placeholder = "----";
+  return (
+    <YearSelectorWrapper>
+      <select
+        value={props.isValidYear ? props.selectedYear : placeholder}
+        onChange={props.onChange}
+      >
+        {[placeholder].concat(props.years).map(year => (
+          <option
+            key={year}
+            value={year}
+            disabled={year === placeholder}
+            hidden={year === placeholder}
+          >
+            {year}
+          </option>
+        ))}
+      </select>
+    </YearSelectorWrapper>
+  );
+};
 
 export default YearSelector;

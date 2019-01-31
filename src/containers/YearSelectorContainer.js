@@ -9,7 +9,7 @@ class YearSelectorContainer extends Component {
   onChange(event) {
     const { value } = event.target;
     this.props.history.push(`/${value}`);
-    this.props.yearChange(value);
+    this.props.onYearChange(value);
   }
   render() {
     return (
@@ -17,6 +17,7 @@ class YearSelectorContainer extends Component {
         years={this.props.years}
         selectedYear={this.props.selectedYear}
         onChange={this.onChange}
+        isValidYear={this.props.isValidYear}
       />
     );
   }

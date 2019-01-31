@@ -52,25 +52,40 @@ const Menu = withRouter(Header);
 class App extends Component {
   constructor(props) {
     super(props);
-    const startYear = 1984;
-    const selectedYear = new Date().getFullYear();
-    const yearsPastCurrentYear = 10;
-    const maxYear = selectedYear + yearsPastCurrentYear;
-    const years = Array(selectedYear - startYear + yearsPastCurrentYear + 1)
-      .fill(startYear)
+
+    this.pathname = window.location.pathname;
+    this.currentYear = new Date().getFullYear();
+    this.selectedYear = this.pathname.replace("/", "")
+      ? this.pathname.replace("/", "")
+      : this.currentYear;
+    this.yearsPastCurrentYear = 10;
+    this.startYear = 1984;
+    this.endYear = this.currentYear + this.yearsPastCurrentYear;
+    this.onYearChange = this.onYearChange.bind(this);
+    this.totalYears =
+      this.currentYear - this.startYear + this.yearsPastCurrentYear + 1;
+    this.years = Array(isNaN(this.totalYears) ? 0 : this.totalYears)
+      .fill(this.startYear)
       .map((year, index) => year + index);
+
     this.state = {
-      startYear,
-      maxYear,
-      selectedYear,
-      years
+      isValidYear: this.isValidYear(this.selectedYear),
+      selectedYear: this.selectedYear,
+      years: this.years
     };
-    this.yearChange = this.yearChange.bind(this);
   }
 
-  yearChange(year) {
+  isValidYear(year) {
+    const startYear = parseInt(this.startYear, 10);
+    const endYear = parseInt(this.endYear, 10);
+    const yearInt = parseInt(year, 10);
+    return isNaN(yearInt) ? false : yearInt >= startYear && yearInt <= endYear;
+  }
+
+  onYearChange(year) {
     this.setState({
-      selectedYear: year
+      selectedYear: year,
+      isValidYear: this.isValidYear(year)
     });
   }
 
@@ -83,7 +98,8 @@ class App extends Component {
             <Menu
               selectedYear={this.state.selectedYear}
               years={this.state.years}
-              yearChange={this.yearChange}
+              onYearChange={this.onYearChange}
+              isValidYear={this.state.isValidYear}
             />
             <Switch>
               <Route
@@ -92,8 +108,9 @@ class App extends Component {
                 render={props => (
                   <Main
                     {...props}
-                    yearChange={this.yearChange}
+                    onYearChange={this.onYearChange}
                     selectedYear={this.state.selectedYear}
+                    isValidYear={this.state.isValidYear}
                   />
                 )}
               />
@@ -102,9 +119,9 @@ class App extends Component {
                 render={props => (
                   <Main
                     {...props}
-                    yearChange={this.yearChange}
-                    maxYear={this.state.maxYear}
-                    startYear={this.state.startYear}
+                    onYearChange={this.onYearChange}
+                    selectedYear={this.state.selectedYear}
+                    isValidYear={this.state.isValidYear}
                   />
                 )}
               />

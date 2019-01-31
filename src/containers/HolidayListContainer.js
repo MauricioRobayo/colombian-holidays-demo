@@ -6,13 +6,13 @@ import NotFound from "../components/NotFound";
 class HolidaysListContainer extends Component {
   constructor(props) {
     super(props);
+    this.props.onYearChange(this.props.selectedYear);
     this.state = {
-      holidays: this.getHolidays(props.selectedYear)
+      holidays: this.getHolidays(this.props.selectedYear)
     };
-    this.props.yearChange(this.props.selectedYear);
   }
   getHolidays = year => {
-    if (year > this.props.maxYear || year < this.props.startYear) {
+    if (!this.props.isValidYear) {
       return [];
     }
     return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
@@ -25,10 +25,10 @@ class HolidaysListContainer extends Component {
     }
   }
   render() {
-    if (this.state.holidays.length === 0) {
-      return <NotFound />;
+    if (this.props.isValidYear) {
+      return <HolidaysList holidays={this.state.holidays} />;
     }
-    return <HolidaysList holidays={this.state.holidays} />;
+    return <NotFound />;
   }
 }
 
