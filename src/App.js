@@ -38,27 +38,22 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={defaultTheme}>
-        <Fragment>
-          <GlobalStyle />
-          <Router>
-            <Fragment>
-              <Nav />
-              <Switch>
-                <Route exact path="/" component={HolidaysContainer} />
-                <Route
-                  path="/:year([1-2]\d{3})"
-                  component={HolidaysContainer}
-                />
-                <Route
-                  render={props => (
-                    <NotFound {...props} message="Algo no tiene sentido." />
-                  )}
-                />
-              </Switch>
-            </Fragment>
-          </Router>
-          <Footer />
-        </Fragment>
+        <Router>
+          <Fragment>
+            <GlobalStyle />
+            <Nav />
+            <Switch>
+              <Route exact path="/" component={HolidaysContainer} />
+              <Route path="/:year([1-2]\d{3})" component={HolidaysContainer} />
+              <Route
+                render={props => (
+                  <NotFound {...props} message="Algo no tiene sentido." />
+                )}
+              />
+            </Switch>
+            <Footer />
+          </Fragment>
+        </Router>
       </ThemeProvider>
     );
   }
