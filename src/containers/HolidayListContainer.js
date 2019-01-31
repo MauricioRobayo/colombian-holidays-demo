@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { getAllHolidays } from "pascua";
 import HolidaysList from "../components/HolidayList";
 import NotFound from "../components/NotFound";
 
@@ -8,19 +7,13 @@ class HolidaysListContainer extends Component {
     super(props);
     this.props.onYearChange(this.props.selectedYear);
     this.state = {
-      holidays: this.getHolidays(this.props.selectedYear)
+      holidays: this.props.getHolidays(this.props.selectedYear)
     };
   }
-  getHolidays = year => {
-    if (!this.props.isValidYear) {
-      return [];
-    }
-    return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
-  };
   componentDidUpdate(prevProps) {
     if (this.props.selectedYear !== prevProps.selectedYear) {
       this.setState({
-        holidays: this.getHolidays(this.props.selectedYear)
+        holidays: this.props.getHolidays(this.props.selectedYear)
       });
     }
   }

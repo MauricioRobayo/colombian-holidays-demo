@@ -1,16 +1,8 @@
-import React, { Component } from "react";
-import styled, {
-  createGlobalStyle,
-  ThemeProvider
-} from "styled-components/macro";
-import {
-  BrowserRouter as Router,
-  Route,
-  withRouter,
-  Switch
-} from "react-router-dom";
-import Header from "./components/Header";
-import Main from "./components/Main";
+import React, { Component, Fragment } from "react";
+import { createGlobalStyle, ThemeProvider } from "styled-components/macro";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import HolidaysContainer from "./containers/HolidaysContainer";
+import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 
@@ -42,94 +34,31 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const AppWrapper = styled.div`
-  text-align: center;
-  margin: auto;
-`;
-
-const Menu = withRouter(Header);
-
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.pathname = window.location.pathname;
-    this.currentYear = new Date().getFullYear();
-    this.selectedYear = this.pathname.replace("/", "")
-      ? this.pathname.replace("/", "")
-      : this.currentYear;
-    this.yearsPastCurrentYear = 10;
-    this.startYear = 1984;
-    this.endYear = this.currentYear + this.yearsPastCurrentYear;
-    this.onYearChange = this.onYearChange.bind(this);
-    this.totalYears =
-      this.currentYear - this.startYear + this.yearsPastCurrentYear + 1;
-    this.years = Array(isNaN(this.totalYears) ? 0 : this.totalYears)
-      .fill(this.startYear)
-      .map((year, index) => year + index);
-
-    this.state = {
-      isValidYear: this.isValidYear(this.selectedYear),
-      selectedYear: this.selectedYear,
-      years: this.years
-    };
-  }
-
-  isValidYear(year) {
-    const startYear = parseInt(this.startYear, 10);
-    const endYear = parseInt(this.endYear, 10);
-    const yearInt = parseInt(year, 10);
-    return isNaN(yearInt) ? false : yearInt >= startYear && yearInt <= endYear;
-  }
-
-  onYearChange(year) {
-    this.setState({
-      selectedYear: year,
-      isValidYear: this.isValidYear(year)
-    });
-  }
-
   render() {
     return (
       <ThemeProvider theme={defaultTheme}>
-        <Router>
-          <AppWrapper>
-            <GlobalStyle />
-            <Menu
-              selectedYear={this.state.selectedYear}
-              years={this.state.years}
-              onYearChange={this.onYearChange}
-              isValidYear={this.state.isValidYear}
-            />
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={props => (
-                  <Main
-                    {...props}
-                    onYearChange={this.onYearChange}
-                    selectedYear={this.state.selectedYear}
-                    isValidYear={this.state.isValidYear}
-                  />
-                )}
-              />
-              <Route
-                path="/:year([1-2]\d{3})"
-                render={props => (
-                  <Main
-                    {...props}
-                    onYearChange={this.onYearChange}
-                    selectedYear={this.state.selectedYear}
-                    isValidYear={this.state.isValidYear}
-                  />
-                )}
-              />
-              <Route component={NotFound} />
-            </Switch>
-            <Footer />
-          </AppWrapper>
-        </Router>
+        <Fragment>
+          <GlobalStyle />
+          <Router>
+            <Fragment>
+              <Nav />
+              <Switch>
+                <Route exact path="/" component={HolidaysContainer} />
+                <Route
+                  path="/:year([1-2]\d{3})"
+                  component={HolidaysContainer}
+                />
+                <Route
+                  render={props => (
+                    <NotFound {...props} message="Algo no tiene sentido." />
+                  )}
+                />
+              </Switch>
+            </Fragment>
+          </Router>
+          <Footer />
+        </Fragment>
       </ThemeProvider>
     );
   }

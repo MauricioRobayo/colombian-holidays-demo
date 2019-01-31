@@ -13,8 +13,10 @@ const slideOut = keyframes`
   to {height: 0;}
 `;
 
-const HolidayListWrapper = styled.div`
-  margin-bottom: 2rem;
+const HolidayListWrapper = styled.main`
+  width: ${props => props.theme.width};
+  max-width: ${props => props.theme.maxWidth};
+  margin: 0 auto 2rem;
   ul {
     list-style: none;
     padding: 0;
