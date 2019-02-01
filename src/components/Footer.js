@@ -19,7 +19,7 @@ const Footer = () => (
     <p>Esta es una página de código abierto.</p>
     <p>
       <a href="https://github.com/archemiro/pascua.archemiro.com">
-        Puedes contribuir acá.
+        Puede contribuir acá.
       </a>
     </p>
     <p>
