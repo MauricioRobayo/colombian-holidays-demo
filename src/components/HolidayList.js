@@ -1,17 +1,7 @@
 import React from "react";
-import styled, { keyframes } from "styled-components/macro";
+import styled from "styled-components/macro";
 import Countdown from "./Countdown";
 import PrettyDate from "./PrettyDate";
-
-const slideIn = keyframes`
-  from {height: 0;}
-  to {height: 1rem;}
-`;
-
-const slideOut = keyframes`
-  from {height: 1rem;}
-  to {height: 0;}
-`;
 
 const HolidayListWrapper = styled.main`
   width: ${props => props.theme.width};
@@ -34,18 +24,11 @@ const HolidayListWrapper = styled.main`
     }
     li.inactive {
       padding: 0.25rem 0.75rem 0.15rem;
-      background: ${({ theme }) => theme.inactiveBG};
       color: ${({ theme }) => theme.inactiveFG};
       font-size: 0.85rem;
       h3 {
         font-weight: normal;
         margin-bottom: 0.15rem;
-      }
-      time {
-        animation: ${slideOut} 0.25s ease-out 0.5s forwards;
-      }
-      &:hover time {
-        animation: ${slideIn} 0.25s ease-out forwards;
       }
     }
   }
