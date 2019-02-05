@@ -3,12 +3,11 @@ import HolidaysList from "../components/HolidayList";
 import NotFound from "../components/NotFound";
 
 class HolidaysListContainer extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    holidays: this.props.getHolidays(this.props.selectedYear)
+  };
+  componentDidMount() {
     this.props.onYearChange(this.props.selectedYear);
-    this.state = {
-      holidays: this.props.getHolidays(this.props.selectedYear)
-    };
   }
   componentDidUpdate(prevProps) {
     if (this.props.selectedYear !== prevProps.selectedYear) {

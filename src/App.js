@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components/macro";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HolidaysContainer from "./containers/HolidaysContainer";
@@ -34,29 +34,25 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-class App extends Component {
-  render() {
-    return (
-      <ThemeProvider theme={defaultTheme}>
-        <Router>
-          <Fragment>
-            <GlobalStyle />
-            <Nav />
-            <Switch>
-              <Route exact path="/" component={HolidaysContainer} />
-              <Route path="/:year([1-2]\d{3})" component={HolidaysContainer} />
-              <Route
-                render={props => (
-                  <NotFound {...props} message="Algo no tiene sentido." />
-                )}
-              />
-            </Switch>
-            <Footer />
-          </Fragment>
-        </Router>
-      </ThemeProvider>
-    );
-  }
-}
+const App = () => (
+  <ThemeProvider theme={defaultTheme}>
+    <Router>
+      <Fragment>
+        <GlobalStyle />
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={HolidaysContainer} />
+          <Route path="/:year([1-2]\d{3})" component={HolidaysContainer} />
+          <Route
+            render={props => (
+              <NotFound {...props} message="Algo no tiene sentido." />
+            )}
+          />
+        </Switch>
+        <Footer />
+      </Fragment>
+    </Router>
+  </ThemeProvider>
+);
 
 export default App;

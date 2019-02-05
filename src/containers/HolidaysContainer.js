@@ -3,48 +3,43 @@ import Holidays from "../components/Holidays";
 import { getAllHolidays } from "pascua";
 
 class MainContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.currentYear = new Date().getFullYear();
-    this.selectedYear = this.props.match.params.year
-      ? this.props.match.params.year
-      : this.currentYear;
-    this.yearsPastCurrentYear = 10;
-    this.startYear = 1984;
-    this.endYear = this.currentYear + this.yearsPastCurrentYear;
-    this.onYearChange = this.onYearChange.bind(this);
-    this.totalYears =
-      this.currentYear - this.startYear + this.yearsPastCurrentYear + 1;
-    this.years = Array(this.totalYears)
-      .fill(this.startYear)
-      .map((year, index) => year + index);
-
-    this.state = {
-      isValidYear: this.isValidYear(this.selectedYear),
-      selectedYear: this.selectedYear,
-      years: this.years
-    };
-  }
-
-  isValidYear(year) {
+  isValidYear = year => {
     const startYear = parseInt(this.startYear, 10);
     const endYear = parseInt(this.endYear, 10);
     return year >= startYear && year <= endYear;
-  }
+  };
 
-  onYearChange(year) {
+  onYearChange = year => {
     this.setState({
       selectedYear: year,
       isValidYear: this.isValidYear(year)
     });
-  }
+  };
 
   getHolidays = year => {
     if (!this.isValidYear(year)) {
       return [];
     }
     return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
+  };
+
+  currentYear = new Date().getFullYear();
+  selectedYear = this.props.match.params.year
+    ? this.props.match.params.year
+    : this.currentYear;
+  yearsPastCurrentYear = 10;
+  startYear = 1984;
+  endYear = this.currentYear + this.yearsPastCurrentYear;
+  totalYears =
+    this.currentYear - this.startYear + this.yearsPastCurrentYear + 1;
+  years = Array(this.totalYears)
+    .fill(this.startYear)
+    .map((year, index) => year + index);
+
+  state = {
+    isValidYear: this.isValidYear(this.selectedYear),
+    selectedYear: this.selectedYear,
+    years: this.years
   };
 
   componentDidUpdate(prevProps) {
