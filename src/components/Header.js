@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
   background-color: ${props => props.theme.primary};
-  padding: 2rem 1rem 3rem;
+  padding: 1rem 1rem 3rem;
   margin: 0 auto 2rem;
   border-bottom: 6px solid ${props => props.theme.danger};
   color: ${props => props.theme.white};
