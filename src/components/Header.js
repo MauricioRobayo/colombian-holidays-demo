@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DropdownContainer from "../containers/DropdownContainer";
+import Dropdown from "../components/Dropdown";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
@@ -26,10 +26,11 @@ const Header = props => (
         <Link to="/">Festivos en Colombia</Link>
       </h1>
     )}
-    <DropdownContainer
+    <Dropdown
       placeholder="año"
       history={props.history}
       options={props.years}
+      onChangeHandler={props.onChangeHandler}
       onChange={props.onYearChange}
       selected={props.selectedYear}
       isValid={props.isValidYear}

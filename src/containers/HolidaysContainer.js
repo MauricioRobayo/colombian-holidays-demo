@@ -16,6 +16,12 @@ class MainContainer extends Component {
     });
   };
 
+  onChangeHandler = event => {
+    const { value } = event.target;
+    this.props.history.push(`/${value}`);
+    this.onYearChange(value);
+  };
+
   getHolidays = year => {
     if (!this.isValidYear(year)) {
       return [];
@@ -58,6 +64,7 @@ class MainContainer extends Component {
   render() {
     return (
       <Holidays
+        onChangeHandler={this.onChangeHandler}
         onYearChange={this.onYearChange}
         getHolidays={this.getHolidays}
         years={this.state.years}

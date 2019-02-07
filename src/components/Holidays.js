@@ -8,6 +8,7 @@ const Menu = withRouter(Header);
 const Main = props => (
   <Fragment>
     <Menu
+      onChangeHandler={props.onChangeHandler}
       onYearChange={props.onYearChange}
       years={props.years}
       selectedYear={props.selectedYear}
