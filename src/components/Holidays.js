@@ -9,13 +9,11 @@ const Main = props => (
   <Fragment>
     <Menu
       onChangeHandler={props.onChangeHandler}
-      onYearChange={props.onYearChange}
       years={props.years}
       selectedYear={props.selectedYear}
       isValidYear={props.isValidYear}
     />
     <HolidaysListContainer
-      onYearChange={props.onYearChange}
       selectedYear={props.selectedYear}
       isValidYear={props.isValidYear}
       getHolidays={props.getHolidays}

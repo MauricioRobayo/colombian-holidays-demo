@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Holidays from "../components/Holidays";
-import { getAllHolidays } from "pascua";
+import NotFound from "../components/NotFound";
 
 class MainContainer extends Component {
   isValidYear = year => {
@@ -9,24 +9,12 @@ class MainContainer extends Component {
     return year >= startYear && year <= endYear;
   };
 
-  onYearChange = year => {
-    this.setState({
-      selectedYear: year,
-      isValidYear: this.isValidYear(year)
-    });
-  };
-
   onChangeHandler = event => {
     const { value } = event.target;
     this.props.history.push(`/${value}`);
-    this.onYearChange(value);
-  };
-
-  getHolidays = year => {
-    if (!this.isValidYear(year)) {
-      return [];
-    }
-    return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
+    this.setState({
+      selectedYear: value
+    });
   };
 
   currentYear = new Date().getFullYear();
@@ -43,7 +31,6 @@ class MainContainer extends Component {
     .map((year, index) => year + index);
 
   state = {
-    isValidYear: this.isValidYear(this.selectedYear),
     selectedYear: this.selectedYear,
     years: this.years
   };
@@ -55,21 +42,20 @@ class MainContainer extends Component {
         ? this.props.match.params.year
         : currentYear;
       this.setState({
-        holidays: this.getHolidays(selectedYear),
-        isValidYear: this.isValidYear(selectedYear),
         selectedYear
       });
     }
   }
   render() {
+    if (!this.isValidYear(this.state.selectedYear)) {
+      return <NotFound {...this.props} />;
+    }
     return (
       <Holidays
         onChangeHandler={this.onChangeHandler}
-        onYearChange={this.onYearChange}
         getHolidays={this.getHolidays}
         years={this.state.years}
         selectedYear={this.state.selectedYear}
-        isValidYear={this.state.isValidYear}
       />
     );
   }
