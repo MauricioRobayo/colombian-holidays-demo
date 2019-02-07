@@ -28,12 +28,12 @@ const Header = props => (
     )}
     <Dropdown
       placeholder="año"
-      history={props.history}
       options={props.years}
-      onChangeHandler={props.onChangeHandler}
-      onChange={props.onYearChange}
-      selected={props.selectedYear}
       isValid={props.isValidYear}
+      onChange={props.onYearChange}
+      history={props.history}
+      onChangeHandler={props.onChangeHandler}
+      selected={props.selectedYear}
     />
   </HeaderWrapper>
 );
