@@ -20,7 +20,7 @@ class MainContainer extends Component {
   currentYear = new Date().getFullYear();
   selectedYear = this.props.match.params.year
     ? this.props.match.params.year
-    : this.currentYear;
+    : null;
   yearsPastCurrentYear = 10;
   startYear = 1984;
   endYear = this.currentYear + this.yearsPastCurrentYear;
@@ -37,17 +37,16 @@ class MainContainer extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.year !== prevProps.match.params.year) {
-      const currentYear = new Date().getFullYear();
       const selectedYear = this.props.match.params.year
         ? this.props.match.params.year
-        : currentYear;
+        : null;
       this.setState({
         selectedYear
       });
     }
   }
   render() {
-    if (!this.isValidYear(this.state.selectedYear)) {
+    if (this.state.selectedYear && !this.isValidYear(this.state.selectedYear)) {
       return <NotFound {...this.props} />;
     }
     return (

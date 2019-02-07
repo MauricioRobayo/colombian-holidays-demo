@@ -43,7 +43,7 @@ const Dropdown = props => {
   const { placeholder } = props;
   return (
     <DropdownWrapper>
-      <select value={props.selected} onChange={props.onChangeHandler}>
+      <select value={props.selected || placeholder} onChange={props.onChangeHandler}>
         {[placeholder].concat(props.options).map(option => (
           <option
             key={option}

@@ -4,6 +4,9 @@ import { getAllHolidays } from "pascua";
 
 class HolidaysListContainer extends Component {
   getHolidays = year => {
+    if (!year) {
+      return [];
+    }
     return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
   };
   state = {
@@ -17,6 +20,9 @@ class HolidaysListContainer extends Component {
     }
   }
   render() {
+    if (!this.props.selectedYear) {
+      return null;
+    }
     return <HolidaysList holidays={this.state.holidays} />;
   }
 }
