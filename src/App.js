@@ -42,7 +42,16 @@ const App = () => (
         <Nav />
         <Switch>
           <Route exact path="/" component={HolidaysContainer} />
-          <Route path="/:year([1-2]\d{3})" component={HolidaysContainer} />
+          <Route
+            exact
+            path="/:year([1-2]\d{3})"
+            component={HolidaysContainer}
+          />
+          <Route
+            exact
+            path="/:year([1-2]\d{3})/:month(\d{2})"
+            component={HolidaysContainer}
+          />
           <Route
             render={props => (
               <NotFound {...props} message="Algo no tiene sentido." />
