@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const YearSelectorWrapper = styled.div`
+const DropdownWrapper = styled.div`
   position: relative;
   margin: 1rem auto 0;
   max-width: 8rem;
@@ -39,27 +39,27 @@ const YearSelectorWrapper = styled.div`
   }
 `;
 
-const YearSelector = props => {
-  const placeholder = "----";
+const Dropdown = props => {
+  const { placeholder } = props;
   return (
-    <YearSelectorWrapper>
+    <DropdownWrapper>
       <select
-        value={props.isValidYear ? props.selectedYear : placeholder}
-        onChange={props.onChange}
+        value={props.isValid ? props.selected : placeholder}
+        onChange={props.onChangeHandler}
       >
-        {[placeholder].concat(props.years).map(year => (
+        {[placeholder].concat(props.options).map(option => (
           <option
-            key={year}
-            value={year}
-            disabled={year === placeholder}
-            hidden={year === placeholder}
+            key={option}
+            value={option}
+            disabled={option === placeholder}
+            hidden={option === placeholder}
           >
-            {year}
+            {option}
           </option>
         ))}
       </select>
-    </YearSelectorWrapper>
+    </DropdownWrapper>
   );
 };
 
-export default YearSelector;
+export default Dropdown;
