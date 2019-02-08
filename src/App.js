@@ -41,15 +41,9 @@ const App = () => (
         <GlobalStyle />
         <Nav />
         <Switch>
-          <Route exact path="/" component={HolidaysContainer} />
           <Route
             exact
-            path="/:year([1-2]\d{3})"
-            component={HolidaysContainer}
-          />
-          <Route
-            exact
-            path="/:year([1-2]\d{3})/:month(\d{2})"
+            path="/:year([1-2]\d{3})?/:month(\d{2})?/:day(\d{2})?"
             component={HolidaysContainer}
           />
           <Route

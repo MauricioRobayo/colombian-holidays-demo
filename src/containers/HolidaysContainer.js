@@ -29,6 +29,7 @@ class MainContainer extends Component {
   state = {
     year: this.props.match.params.year,
     month: this.props.match.params.month,
+    day: this.props.match.params.day,
     years: Array(this.totalYears)
       .fill(this.startYear)
       .map((year, index) => year + index)
