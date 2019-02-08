@@ -4,9 +4,10 @@ import styled from "styled-components";
 const DropdownWrapper = styled.div`
   position: relative;
   margin: 1rem auto 0;
-  max-width: 8rem;
   background: none;
+  display: inline-block;
   cursor: pointer;
+  margin: 0.5rem;
   &:after {
     content: "";
     width: 0;
@@ -29,7 +30,7 @@ const DropdownWrapper = styled.div`
     line-height: 1.5em;
     appearance: none;
     margin: 0;
-    padding: 0 0 0 20px;
+    padding: 0 2rem 0 20px;
     width: 100%;
     height: 100%;
     cursor: pointer;
@@ -40,16 +41,21 @@ const DropdownWrapper = styled.div`
 `;
 
 const Dropdown = props => {
-  const { placeholder } = props;
   return (
     <DropdownWrapper>
-      <select value={props.selected || placeholder} onChange={props.onChangeHandler}>
-        {[placeholder].concat(props.options).map(option => (
+      <select
+        name={props.name}
+        value={
+          props.selected || (props.name === "year" ? props.placeholder : "00")
+        }
+        onChange={props.onChangeHandler}
+      >
+        {[props.placeholder].concat(props.options).map((option, index) => (
           <option
             key={option}
-            value={option}
-            disabled={option === placeholder}
-            hidden={option === placeholder}
+            value={props.name === "year" ? option : `0${index}`.slice(-2)}
+            disabled={option === props.placeholder}
+            hidden={option === props.placeholder}
           >
             {option}
           </option>

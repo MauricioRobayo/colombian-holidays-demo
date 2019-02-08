@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 import Countdown from "./Countdown";
 import PrettyDate from "./PrettyDate";
@@ -7,10 +8,13 @@ const HolidayListWrapper = styled.main`
   width: ${props => props.theme.width};
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto 2rem;
-  ul {
+  > ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    li:first-child {
+      border-top: 1px solid ${({ theme }) => theme.greylighter};
+    }
     li {
       padding: 0.75em;
       border-bottom: 1px solid ${({ theme }) => theme.greylighter};
@@ -34,8 +38,42 @@ const HolidayListWrapper = styled.main`
   }
 `;
 
-const HolidaysList = ({ holidays }) => {
+const HolidaysList = props => {
+  const months = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre"
+  ];
   const date = new Date();
+  const holidays = props.month
+    ? props.holidays.filter(
+        holiday => holiday.date.split("-")[1] === props.month
+      )
+    : props.holidays;
+  if (props.month && holidays.length === 0) {
+    return (
+      <HolidayListWrapper>
+        <p>
+          No hay festivos durante {months[parseInt(props.month, 10) - 1]} de{" "}
+          <Link to={`/${props.year}`}>{props.year}</Link>.
+        </p>
+        <p>
+          <span role="img" aria-label="no hay festivos">
+            😥
+          </span>
+        </p>
+      </HolidayListWrapper>
+    );
+  }
   return (
     <HolidayListWrapper>
       <ul>

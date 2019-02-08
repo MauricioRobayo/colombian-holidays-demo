@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HolidaysList from "../components/HolidayList";
 import { getAllHolidays } from "pascua";
+import NoMatch from "../components/NoMatch";
 
 class HolidaysListContainer extends Component {
   getHolidays = year => {
@@ -10,20 +11,37 @@ class HolidaysListContainer extends Component {
     return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
   };
   state = {
-    holidays: this.getHolidays(this.props.selectedYear)
+    holidays: this.getHolidays(this.props.year)
   };
+
   componentDidUpdate(prevProps) {
-    if (this.props.selectedYear !== prevProps.selectedYear) {
+    if (this.props.year !== prevProps.year) {
       this.setState({
-        holidays: this.getHolidays(this.props.selectedYear)
+        holidays: this.getHolidays(this.props.year)
       });
     }
   }
   render() {
-    if (!this.props.selectedYear) {
-      return null;
+    if (!this.props.year) {
+      const yearsOptions = {
+        name: "year",
+        placeholder: "año",
+        options: this.props.years
+      };
+      return (
+        <NoMatch
+          {...yearsOptions}
+          onChangeHandler={this.props.onChangeHandler}
+        />
+      );
     }
-    return <HolidaysList holidays={this.state.holidays} />;
+    return (
+      <HolidaysList
+        year={this.props.year}
+        month={this.props.month}
+        holidays={this.state.holidays}
+      />
+    );
   }
 }
 

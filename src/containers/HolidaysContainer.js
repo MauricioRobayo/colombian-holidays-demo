@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Holidays from "../components/Holidays";
-import NotFound from "../components/NotFound";
+import NoMatch from "../components/NoMatch";
+import Header from "../components/Header";
 
 class MainContainer extends Component {
   isValidYear = year => {
@@ -10,51 +11,62 @@ class MainContainer extends Component {
   };
 
   onChangeHandler = event => {
-    const { value } = event.target;
-    this.props.history.push(`/${value}`);
+    const { name, value } = event.target;
     this.setState({
-      selectedYear: value
+      [name]: value
     });
+    const path = name === "year" ? `/${value}` : `/${this.state.year}/${value}`;
+    this.props.history.push(path);
   };
 
   currentYear = new Date().getFullYear();
-  selectedYear = this.props.match.params.year
-    ? this.props.match.params.year
-    : null;
   yearsPastCurrentYear = 10;
   startYear = 1984;
   endYear = this.currentYear + this.yearsPastCurrentYear;
   totalYears =
     this.currentYear - this.startYear + this.yearsPastCurrentYear + 1;
-  years = Array(this.totalYears)
-    .fill(this.startYear)
-    .map((year, index) => year + index);
 
   state = {
-    selectedYear: this.selectedYear,
-    years: this.years
+    year: this.props.match.params.year,
+    month: this.props.match.params.month,
+    years: Array(this.totalYears)
+      .fill(this.startYear)
+      .map((year, index) => year + index)
   };
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.year !== prevProps.match.params.year) {
-      const selectedYear = this.props.match.params.year
-        ? this.props.match.params.year
-        : null;
       this.setState({
-        selectedYear
+        year: this.props.match.params.year
+      });
+    }
+    if (this.props.match.params.month !== prevProps.match.params.month) {
+      this.setState({
+        month: this.props.match.params.month
       });
     }
   }
   render() {
-    if (this.state.selectedYear && !this.isValidYear(this.state.selectedYear)) {
-      return <NotFound {...this.props} />;
+    if (this.state.year && !this.isValidYear(this.state.year)) {
+      const yearsOptions = {
+        name: "year",
+        placeholder: "año",
+        options: this.state.years
+      };
+      return (
+        <Fragment>
+          <Header />
+          <NoMatch {...yearsOptions} onChangeHandler={this.onChangeHandler} />
+        </Fragment>
+      );
     }
     return (
       <Holidays
         onChangeHandler={this.onChangeHandler}
         getHolidays={this.getHolidays}
         years={this.state.years}
-        selectedYear={this.state.selectedYear}
+        year={this.state.year}
+        month={this.state.month}
       />
     );
   }

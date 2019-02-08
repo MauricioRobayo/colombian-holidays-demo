@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HolidaysContainer from "./containers/HolidaysContainer";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import NotFound from "./components/NotFound";
+import NoMatch from "./components/NoMatch";
 
 const defaultTheme = {
   dark: "#444",
@@ -54,7 +54,7 @@ const App = () => (
           />
           <Route
             render={props => (
-              <NotFound {...props} message="Algo no tiene sentido." />
+              <NoMatch {...props} message="Algo no tiene sentido." />
             )}
           />
         </Switch>

@@ -11,23 +11,55 @@ const HeaderWrapper = styled.header`
   select {
     font-size: 2rem;
   }
-  a {
-    color: ${props => props.theme.white};
-  }
 `;
 
 const Header = props => {
+  const yearsOptions = {
+    name: "year",
+    placeholder: "año",
+    options: props.years
+  };
+  const monthsOptions = {
+    name: "month",
+    placeholder: "mes",
+    options: [
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre"
+    ]
+  };
   return (
     <HeaderWrapper>
-      <h1>Festivos en Colombia {props.selectedYear}</h1>
-      <Dropdown
-        placeholder="año"
-        options={props.years}
-        onChange={props.onYearChange}
-        history={props.history}
-        onChangeHandler={props.onChangeHandler}
-        selected={props.selectedYear}
-      />
+      <h1>
+        Festivos en Colombia{" "}
+        {props.month
+          ? monthsOptions.options[parseInt(props.month, 10) - 1]
+          : ""}{" "}
+        {props.year}
+      </h1>
+      {props.year && (
+        <div>
+          <Dropdown
+            {...yearsOptions}
+            onChangeHandler={props.onChangeHandler}
+            selected={props.year}
+          />
+          <Dropdown
+            {...monthsOptions}
+            onChangeHandler={props.onChangeHandler}
+            selected={props.month}
+          />
+        </div>
+      )}
     </HeaderWrapper>
   );
 };

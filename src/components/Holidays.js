@@ -1,21 +1,21 @@
 import React, { Fragment } from "react";
-import { withRouter } from "react-router-dom";
 import HolidaysListContainer from "../containers/HolidayListContainer";
 import Header from "./Header";
 
-const Menu = withRouter(Header);
-
 const Main = props => (
   <Fragment>
-    <Menu
+    <Header
       onChangeHandler={props.onChangeHandler}
       years={props.years}
-      selectedYear={props.selectedYear}
+      year={props.year}
+      month={props.month}
       isValidYear={props.isValidYear}
     />
     <HolidaysListContainer
-      selectedYear={props.selectedYear}
-      isValidYear={props.isValidYear}
+      onChangeHandler={props.onChangeHandler}
+      years={props.years}
+      year={props.year}
+      month={props.month}
       getHolidays={props.getHolidays}
     />
   </Fragment>
