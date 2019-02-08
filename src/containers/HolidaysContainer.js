@@ -35,14 +35,14 @@ class MainContainer extends Component {
   endYear = this.currentYear + this.yearsPastCurrentYear;
   totalYears =
     this.currentYear - this.startYear + this.yearsPastCurrentYear + 1;
+  years = Array(this.totalYears)
+    .fill(this.startYear)
+    .map((year, index) => year + index);
 
   state = {
     year: this.props.match.params.year,
     month: this.props.match.params.month,
-    day: this.props.match.params.day,
-    years: Array(this.totalYears)
-      .fill(this.startYear)
-      .map((year, index) => year + index)
+    day: this.props.match.params.day
   };
 
   componentDidUpdate(prevProps) {
@@ -71,7 +71,7 @@ class MainContainer extends Component {
       const yearsOptions = {
         name: "year",
         placeholder: "año",
-        options: this.state.years
+        options: this.years
       };
       return (
         <Fragment>
@@ -84,7 +84,7 @@ class MainContainer extends Component {
       <Holidays
         onChangeHandler={this.onChangeHandler}
         getHolidays={this.getHolidays}
-        years={this.state.years}
+        years={this.years}
         year={this.state.year}
         month={this.state.month}
         day={this.state.day}
