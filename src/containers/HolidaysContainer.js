@@ -10,6 +10,11 @@ class MainContainer extends Component {
     return year >= startYear && year <= endYear;
   };
 
+  isValidMonth = month => {
+    const monthInt = parseInt(month, 10);
+    return monthInt >= 1 && monthInt <= 12;
+  };
+
   onChangeHandler = event => {
     const { name, value } = event.target;
     this.setState({
@@ -48,7 +53,11 @@ class MainContainer extends Component {
     }
   }
   render() {
-    if (this.state.year && !this.isValidYear(this.state.year)) {
+    if (
+      this.state.year &&
+      (!this.isValidYear(this.state.year) ||
+        (this.state.month && !this.isValidMonth(this.state.month)))
+    ) {
       const yearsOptions = {
         name: "year",
         placeholder: "año",
