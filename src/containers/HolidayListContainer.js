@@ -39,6 +39,7 @@ class HolidaysListContainer extends Component {
       <HolidaysList
         year={this.props.year}
         month={this.props.month}
+        day={this.props.day}
         holidays={this.state.holidays}
       />
     );

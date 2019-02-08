@@ -14,6 +14,17 @@ const HeaderWrapper = styled.header`
 `;
 
 const Header = props => {
+  const month = props.month && parseInt(props.month, 10) - 1;
+  const totalDays = new Date(props.year, month + 1, 0).getDate();
+  const daysOptions = {
+    name: "day",
+    placeholder: "día",
+    options: props.month
+      ? Array(totalDays)
+          .fill(1)
+          .map((day, index) => day + index)
+      : []
+  };
   const yearsOptions = {
     name: "year",
     placeholder: "año",
@@ -40,10 +51,7 @@ const Header = props => {
   return (
     <HeaderWrapper>
       <h1>
-        Festivos en Colombia{" "}
-        {props.month
-          ? monthsOptions.options[parseInt(props.month, 10) - 1]
-          : ""}{" "}
+        Festivos en Colombia {month ? monthsOptions.options[month] : ""}{" "}
         {props.year}
       </h1>
       {props.year && (
@@ -58,6 +66,13 @@ const Header = props => {
             onChangeHandler={props.onChangeHandler}
             selected={props.month}
           />
+          {props.month && (
+            <Dropdown
+              {...daysOptions}
+              onChangeHandler={props.onChangeHandler}
+              selected={props.day}
+            />
+          )}
         </div>
       )}
     </HeaderWrapper>

@@ -9,6 +9,7 @@ const Main = props => (
       years={props.years}
       year={props.year}
       month={props.month}
+      day={props.day}
       isValidYear={props.isValidYear}
     />
     <HolidaysListContainer
@@ -16,6 +17,7 @@ const Main = props => (
       years={props.years}
       year={props.year}
       month={props.month}
+      day={props.day}
       getHolidays={props.getHolidays}
     />
   </Fragment>

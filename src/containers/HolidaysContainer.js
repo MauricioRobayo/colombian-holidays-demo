@@ -20,7 +20,12 @@ class MainContainer extends Component {
     this.setState({
       [name]: value
     });
-    const path = name === "year" ? `/${value}` : `/${this.state.year}/${value}`;
+    const path =
+      name === "year"
+        ? `/${value}`
+        : name === "month"
+        ? `/${this.state.year}/${value}`
+        : `/${this.state.year}/${this.state.month}/${value}`;
     this.props.history.push(path);
   };
 
@@ -51,6 +56,11 @@ class MainContainer extends Component {
         month: this.props.match.params.month
       });
     }
+    if (this.props.match.params.day !== prevProps.match.params.day) {
+      this.setState({
+        day: this.props.match.params.day
+      });
+    }
   }
   render() {
     if (
@@ -77,6 +87,7 @@ class MainContainer extends Component {
         years={this.state.years}
         year={this.state.year}
         month={this.state.month}
+        day={this.state.day}
       />
     );
   }

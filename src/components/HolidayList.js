@@ -8,6 +8,12 @@ const HolidayListWrapper = styled.main`
   width: ${props => props.theme.width};
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto 2rem;
+  time {
+    display: block;
+  }
+  time::first-letter {
+    text-transform: uppercase;
+  }
   > ul {
     list-style: none;
     padding: 0;
@@ -39,6 +45,43 @@ const HolidayListWrapper = styled.main`
 `;
 
 const HolidaysList = props => {
+  if (props.day) {
+    const date = `${props.year}-${props.month}-${props.day}`;
+    if (props.holidays.find(holiday => holiday.date === date)) {
+      return (
+        <HolidayListWrapper>
+          <h2>
+            <PrettyDate date={date} />
+            <p>
+              <span role="img" aria-label="estrellas">
+                ✨
+              </span>
+              ES FESTIVO
+              <span role="img" aria-label="estrellas">
+                ✨
+              </span>
+            </p>
+            <span role="img" aria-label="es festivo">
+              😄
+            </span>
+          </h2>
+        </HolidayListWrapper>
+      );
+    }
+    return (
+      <HolidayListWrapper>
+        <h2>
+          <PrettyDate date={date} />
+          <p>
+            <strong>NO</strong> ES FESTIVO
+          </p>
+          <span role="img" aria-label="no es festivo">
+            😥
+          </span>
+        </h2>
+      </HolidayListWrapper>
+    );
+  }
   const months = [
     "enero",
     "febrero",
