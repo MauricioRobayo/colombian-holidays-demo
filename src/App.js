@@ -1,6 +1,11 @@
 import React, { Fragment } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components/macro";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import HolidaysContainer from "./containers/HolidaysContainer";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -40,7 +45,9 @@ const App = () => (
       <Fragment>
         <GlobalStyle />
         <Nav />
+        <Redirect from="/" to={`/${new Date().getFullYear()}`} />
         <Switch>
+          <Route exact path="/" component={HolidaysContainer} />
           <Route
             exact
             path="/:year([1-2]\d{3})?/:month(\d{2})?/:day(\d{2})?"
