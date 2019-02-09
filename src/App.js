@@ -45,12 +45,11 @@ const App = () => (
       <Fragment>
         <GlobalStyle />
         <Nav />
-        <Redirect from="/" to={`/${new Date().getFullYear()}`} />
         <Switch>
-          <Route exact path="/" component={HolidaysContainer} />
+          <Redirect exact from="/" to={`/${new Date().getFullYear()}`} />
           <Route
             exact
-            path="/:year([1-2]\d{3})?/:month(\d{2})?/:day(\d{2})?"
+            path="/:year([1-2]\d{3})/:month(\d{2})?/:day(\d{2})?"
             component={HolidaysContainer}
           />
           <Route
