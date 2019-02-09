@@ -1,16 +1,22 @@
 import React from "react";
+import styled from "styled-components";
 import PrettyDate from "./PrettyDate";
-import Celebrate from "./Celebrate";
+
+const DayWrapper = styled.h2`
+  padding: 0 1rem;
+  .celebrate:after,
+  .celebrate:before {
+    content: "✨";
+  }
+`;
 
 const Day = props => {
   return (
-    <h2>
+    <DayWrapper>
       <PrettyDate date={props.date} />
 
       {props.isHoliday ? (
-        <p>
-          <Celebrate>ES FESTIVO</Celebrate>
-        </p>
+        <p className="celebrate">ES FESTIVO</p>
       ) : (
         <p>
           <strong>NO</strong> ES FESTIVO{" "}
@@ -23,7 +29,7 @@ const Day = props => {
       >
         {props.isHoliday ? "😄" : "😥"}
       </span>
-    </h2>
+    </DayWrapper>
   );
 };
 
