@@ -27,15 +27,10 @@ const HeaderWrapper = styled.header`
 
 const Header = props => {
   const month = props.month && parseInt(props.month, 10) - 1;
-  const totalDays = new Date(props.year, month + 1, 0).getDate();
   const daysOptions = {
     name: "day",
     placeholder: "día",
-    options: props.month
-      ? Array(totalDays)
-          .fill(1)
-          .map((day, index) => day + index)
-      : []
+    options: props.days
   };
   const yearsOptions = {
     name: "year",
@@ -45,20 +40,7 @@ const Header = props => {
   const monthsOptions = {
     name: "month",
     placeholder: "mes",
-    options: [
-      "enero",
-      "febrero",
-      "marzo",
-      "abril",
-      "mayo",
-      "junio",
-      "julio",
-      "agosto",
-      "septiembre",
-      "octubre",
-      "noviembre",
-      "diciembre"
-    ]
+    options: props.months
   };
   return (
     <HeaderWrapper>

@@ -13,14 +13,6 @@ const NotFoundWrapper = styled.div`
 const NotFound = props => {
   return (
     <NotFoundWrapper>
-      {props.options ? (
-        <Dropdown
-          name={props.name}
-          placeholder={props.placeholder}
-          options={props.options}
-          onChangeHandler={props.onChangeHandler}
-        />
-      ) : null}
       {props.message ? (
         <Fragment>
           <p role="img" aria-label="not-found">
@@ -28,6 +20,14 @@ const NotFound = props => {
           </p>
           <p>{props.message}</p>
         </Fragment>
+      ) : null}
+      {props.options ? (
+        <Dropdown
+          name={props.name}
+          placeholder={props.placeholder}
+          options={props.options}
+          onChangeHandler={props.onChangeHandler}
+        />
       ) : null}
     </NotFoundWrapper>
   );
