@@ -11,12 +11,12 @@ class HolidaysContainer extends Component {
   currentYear = new Date().getFullYear();
   yearsPastCurrentYear = 10;
   endYear = this.currentYear + this.yearsPastCurrentYear;
-  years = this.getYears();
-  months = this.getMonths();
   state = {
     year: this.props.match.params.year,
     month: this.props.match.params.month,
     day: this.props.match.params.day,
+    years: this.getYears(),
+    months: this.getMonths(),
     days: this.getDays(
       this.props.match.params.year,
       this.props.match.params.month
@@ -116,7 +116,7 @@ class HolidaysContainer extends Component {
       const yearsOptions = {
         name: "year",
         placeholder: "año",
-        options: this.years
+        options: this.state.years
       };
       return (
         <Fragment>
@@ -136,12 +136,7 @@ class HolidaysContainer extends Component {
       );
       return (
         <Fragment>
-          <Header
-            {...this.state}
-            years={this.years}
-            months={this.months}
-            onChangeHandler={this.onChangeHandler}
-          />
+          <Header {...this.state} onChangeHandler={this.onChangeHandler} />
           <Day date={date} isHoliday={isHoliday} />
         </Fragment>
       );
@@ -154,24 +149,14 @@ class HolidaysContainer extends Component {
     if (this.state.month && holidays.length === 0) {
       return (
         <Fragment>
-          <Header
-            {...this.state}
-            years={this.years}
-            months={this.months}
-            onChangeHandler={this.onChangeHandler}
-          />
+          <Header {...this.state} onChangeHandler={this.onChangeHandler} />
           <NoHolidays year={this.state.year} month={this.state.month} />
         </Fragment>
       );
     }
     return (
       <Fragment>
-        <Header
-          {...this.state}
-          years={this.years}
-          months={this.months}
-          onChangeHandler={this.onChangeHandler}
-        />
+        <Header {...this.state} onChangeHandler={this.onChangeHandler} />
         <HolidaysList holidays={holidays} />
       </Fragment>
     );
