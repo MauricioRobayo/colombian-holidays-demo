@@ -75,7 +75,8 @@ class HolidaysContainer extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.match.params.year !== prevProps.match.params.year) {
       this.setState({
-        year: this.props.match.params.year
+        year: this.props.match.params.year,
+        holidays: this.getHolidays(this.props.match.params.year)
       });
     }
     if (this.props.match.params.month !== prevProps.match.params.month) {
