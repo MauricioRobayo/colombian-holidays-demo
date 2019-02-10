@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { getAllHolidays } from "pascua";
 import NoMatch from "../components/NoMatch";
-import Header from "../components/Header";
 import HolidaysList from "../components/HolidaysList";
 import Day from "../components/Day";
 import NoHolidays from "../components/NoHolidays";
 
 class HolidaysContainer extends Component {
+
   startYear = 1984;
   currentYear = new Date().getFullYear();
   yearsPastCurrentYear = 10;
@@ -23,6 +23,21 @@ class HolidaysContainer extends Component {
     ),
     holidays: this.getHolidays(this.props.match.params.year)
   };
+
+  onChangeHandler = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+    const path =
+      name === "year"
+        ? `/${value}`
+        : name === "month"
+        ? `/${this.state.year}/${value}`
+        : `/${this.state.year}/${this.state.month}/${value}`;
+    this.props.history.push(path);
+  };
+  
   getYears() {
     const totalYears =
       this.currentYear - this.startYear + this.yearsPastCurrentYear + 1;
@@ -30,6 +45,7 @@ class HolidaysContainer extends Component {
       .fill(this.startYear)
       .map((year, index) => year + index);
   }
+
   getMonths() {
     return [
       "enero",
@@ -46,6 +62,7 @@ class HolidaysContainer extends Component {
       "diciembre"
     ];
   }
+
   getDays(year, month) {
     if (!year || !month) return [];
     const intYear = parseInt(year, 10);
@@ -54,24 +71,29 @@ class HolidaysContainer extends Component {
     const totalDays = new Date(intYear, intMonth, 0).getDate();
     return Array.from({ length: totalDays }, (_, k) => k + 1);
   }
+
   getHolidays(year) {
     if (!this.isValidYear(year)) {
       return [];
     }
     return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
   }
+
   isValidYear(year) {
     const startYear = parseInt(this.startYear, 10);
     const endYear = parseInt(this.endYear, 10);
     return year >= startYear && year <= endYear;
   }
+
   isValidMonth(month) {
     const monthInt = parseInt(month, 10);
     return monthInt >= 1 && monthInt <= 12;
   }
+
   isValidDay(day) {
     return this.state.days.includes(parseInt(day, 10));
   }
+
   componentDidUpdate(prevProps) {
     if (this.props.match.params.year !== prevProps.match.params.year) {
       this.setState({
@@ -94,19 +116,7 @@ class HolidaysContainer extends Component {
       });
     }
   }
-  onChangeHandler = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-    const path =
-      name === "year"
-        ? `/${value}`
-        : name === "month"
-        ? `/${this.state.year}/${value}`
-        : `/${this.state.year}/${this.state.month}/${value}`;
-    this.props.history.push(path);
-  };
+
   render() {
     if (
       (this.state.year && !this.isValidYear(this.state.year)) ||
@@ -119,14 +129,11 @@ class HolidaysContainer extends Component {
         options: this.state.years
       };
       return (
-        <Fragment>
-          <Header />
-          <NoMatch
-            {...yearsOptions}
-            message="Al parecer no contamos con esa información."
-            onChangeHandler={this.onChangeHandler}
-          />
-        </Fragment>
+        <NoMatch
+          {...yearsOptions}
+          message="Al parecer no contamos con esa información."
+          onChangeHandler={this.onChangeHandler}
+        />
       );
     }
     if (this.state.day) {
@@ -135,10 +142,12 @@ class HolidaysContainer extends Component {
         holiday => holiday.date === date
       );
       return (
-        <Fragment>
-          <Header {...this.state} onChangeHandler={this.onChangeHandler} />
-          <Day date={date} isHoliday={isHoliday} />
-        </Fragment>
+        <Day
+          {...this.state}
+          onChangeHandler={this.onChangeHandler}
+          date={date}
+          isHoliday={isHoliday}
+        />
       );
     }
     const holidays = this.state.month
@@ -148,17 +157,15 @@ class HolidaysContainer extends Component {
       : this.state.holidays;
     if (this.state.month && holidays.length === 0) {
       return (
-        <Fragment>
-          <Header {...this.state} onChangeHandler={this.onChangeHandler} />
-          <NoHolidays year={this.state.year} month={this.state.month} />
-        </Fragment>
+        <NoHolidays {...this.state} onChangeHandler={this.onChangeHandler} />
       );
     }
     return (
-      <Fragment>
-        <Header {...this.state} onChangeHandler={this.onChangeHandler} />
-        <HolidaysList holidays={holidays} />
-      </Fragment>
+      <HolidaysList
+        {...this.state}
+        onChangeHandler={this.onChangeHandler}
+        holidays={holidays}
+      />
     );
   }
 }

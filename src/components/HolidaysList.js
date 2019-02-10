@@ -1,12 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components/macro";
 import PrettyDate from "./PrettyDate";
 import Countdown from "./Countdown";
+import Header from "./Header";
+import Main from "./Main";
 
-const HolidaysListWrapper = styled.main`
-  width: ${props => props.theme.width};
-  max-width: ${props => props.theme.maxWidth};
-  margin: 0 auto 2rem;
+const HolidaysListWrapper = styled(Main)`
   time {
     display: block;
   }
@@ -46,29 +45,33 @@ const HolidaysListWrapper = styled.main`
 const HolidaysList = props => {
   const date = new Date();
   return (
-    <HolidaysListWrapper>
-      <ul>
-        {props.holidays.map((holiday, index, array) => {
-          // Ajustamos a la zona horaria de Colombia
-          const holidayDate = new Date(`${holiday.date}T05:00`);
-          const currentYear = holidayDate.getFullYear() === date.getFullYear();
-          const inactive = holidayDate < date && currentYear;
-          let current = false;
-          if (index) {
-            const previousIsActive =
-              new Date(`${array[index - 1].date}T05:00`) < date;
-            current = currentYear && inactive !== previousIsActive;
-          }
-          return (
-            <li key={holiday.name} className={inactive ? "inactive" : ""}>
-              <h3>{holiday.name}</h3>
-              <PrettyDate date={holiday.date} />
-              {current && <Countdown date={holiday.date} />}
-            </li>
-          );
-        })}
-      </ul>
-    </HolidaysListWrapper>
+    <Fragment>
+      <Header {...props} />
+      <HolidaysListWrapper>
+        <ul>
+          {props.holidays.map((holiday, index, array) => {
+            // Ajustamos a la zona horaria de Colombia
+            const holidayDate = new Date(`${holiday.date}T05:00`);
+            const currentYear =
+              holidayDate.getFullYear() === date.getFullYear();
+            const inactive = holidayDate < date && currentYear;
+            let current = false;
+            if (index) {
+              const previousIsActive =
+                new Date(`${array[index - 1].date}T05:00`) < date;
+              current = currentYear && inactive !== previousIsActive;
+            }
+            return (
+              <li key={holiday.name} className={inactive ? "inactive" : ""}>
+                <h3>{holiday.name}</h3>
+                <PrettyDate date={holiday.date} />
+                {current && <Countdown date={holiday.date} />}
+              </li>
+            );
+          })}
+        </ul>
+      </HolidaysListWrapper>
+    </Fragment>
   );
 };
 

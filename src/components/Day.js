@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import PrettyDate from "./PrettyDate";
+import Header from "./Header";
+import Main from "./Main";
 
-const DayWrapper = styled.h2`
-  padding: 0 1rem;
+const DayWrapper = styled(Main)`
+  font-size: 1.5rem;
   .celebrate:after,
   .celebrate:before {
     content: "✨";
@@ -12,24 +14,26 @@ const DayWrapper = styled.h2`
 
 const Day = props => {
   return (
-    <DayWrapper>
-      <PrettyDate date={props.date} />
+    <Fragment>
+      <Header {...props} />
+      <DayWrapper>
+        <PrettyDate date={props.date} />
+        {props.isHoliday ? (
+          <p className="celebrate">ES FESTIVO</p>
+        ) : (
+          <p>
+            <strong>NO</strong> ES FESTIVO{" "}
+          </p>
+        )}
 
-      {props.isHoliday ? (
-        <p className="celebrate">ES FESTIVO</p>
-      ) : (
-        <p>
-          <strong>NO</strong> ES FESTIVO{" "}
-        </p>
-      )}
-
-      <span
-        role="img"
-        aria-label={props.isHoliday ? "es festivo" : "no es festivo"}
-      >
-        {props.isHoliday ? "😄" : "😥"}
-      </span>
-    </DayWrapper>
+        <span
+          role="img"
+          aria-label={props.isHoliday ? "es festivo" : "no es festivo"}
+        >
+          {props.isHoliday ? "😄" : "😥"}
+        </span>
+      </DayWrapper>
+    </Fragment>
   );
 };
 
