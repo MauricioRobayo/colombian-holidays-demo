@@ -55,7 +55,7 @@ class HolidaysContainer extends Component {
     return Array.from({ length: totalDays }, (_, k) => k + 1);
   }
   getHolidays(year) {
-    if (!year) {
+    if (!this.isValidYear(year)) {
       return [];
     }
     return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
