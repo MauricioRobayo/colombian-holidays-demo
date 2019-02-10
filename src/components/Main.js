@@ -6,7 +6,7 @@ const MainWrapper = styled.main`
   max-width: ${props => props.theme.maxWidth};
   margin: auto;
   text-align: center;
-  padding: 0 1rem 2rem;
+  padding: 2rem 1rem;
   time {
     display: block;
   }
