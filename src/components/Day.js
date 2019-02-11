@@ -21,11 +21,8 @@ const Day = props => {
         {props.isHoliday ? (
           <p className="celebrate">ES FESTIVO</p>
         ) : (
-          <p>
-            <strong>NO</strong> ES FESTIVO{" "}
-          </p>
+          <p>NO ES FESTIVO</p>
         )}
-
         <span
           role="img"
           aria-label={props.isHoliday ? "es festivo" : "no es festivo"}
