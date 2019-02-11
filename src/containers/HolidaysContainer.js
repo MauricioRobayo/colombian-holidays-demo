@@ -6,7 +6,6 @@ import Day from "../components/Day";
 import NoHolidays from "../components/NoHolidays";
 
 class HolidaysContainer extends Component {
-
   startYear = 1984;
   currentYear = new Date().getFullYear();
   yearsPastCurrentYear = 10;
@@ -37,13 +36,11 @@ class HolidaysContainer extends Component {
         : `/${this.state.year}/${this.state.month}/${value}`;
     this.props.history.push(path);
   };
-  
+
   getYears() {
     const totalYears =
       this.currentYear - this.startYear + this.yearsPastCurrentYear + 1;
-    return Array(totalYears)
-      .fill(this.startYear)
-      .map((year, index) => year + index);
+    return Array.from({ length: totalYears }, (_, k) => this.startYear + k);
   }
 
   getMonths() {
