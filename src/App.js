@@ -21,8 +21,7 @@ const defaultTheme = {
   primary: "#6b5b95",
   success: "#00A591",
   danger: "#fe840e",
-  maxWidth: "640px",
-  width: "95%"
+  maxWidth: "640px"
 };
 
 const GlobalStyle = createGlobalStyle`
