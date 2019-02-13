@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react'
+import styled from 'styled-components/macro'
 
 const MainWrapper = styled.main`
   max-width: ${props => props.theme.maxWidth};
@@ -12,10 +12,10 @@ const MainWrapper = styled.main`
   time::first-letter {
     text-transform: uppercase;
   }
-`;
+`
 
 const Main = ({ children, className }) => {
-  return <MainWrapper className={className}>{children}</MainWrapper>;
-};
+  return <MainWrapper className={className}>{children}</MainWrapper>
+}
 
-export default Main;
+export default Main

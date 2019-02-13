@@ -1,6 +1,6 @@
-import React from "react";
-import Dropdown from "../components/Dropdown";
-import styled from "styled-components";
+import React from 'react'
+import Dropdown from '../components/Dropdown'
+import styled from 'styled-components'
 
 const HeaderWrapper = styled.header`
   background-color: ${props => props.theme.primary};
@@ -23,29 +23,29 @@ const HeaderWrapper = styled.header`
       font-size: 2rem;
     }
   }
-`;
+`
 
 const Header = props => {
-  const month = props.month && parseInt(props.month, 10) - 1;
+  const month = props.month && parseInt(props.month, 10) - 1
   const daysOptions = {
-    name: "day",
-    placeholder: "día",
-    options: props.days
-  };
+    name: 'day',
+    placeholder: 'día',
+    options: props.days,
+  }
   const yearsOptions = {
-    name: "year",
-    placeholder: "año",
-    options: props.years
-  };
+    name: 'year',
+    placeholder: 'año',
+    options: props.years,
+  }
   const monthsOptions = {
-    name: "month",
-    placeholder: "mes",
-    options: props.months
-  };
+    name: 'month',
+    placeholder: 'mes',
+    options: props.months,
+  }
   return (
     <HeaderWrapper>
       <h1>
-        Festivos en Colombia {month ? monthsOptions.options[month] : ""}{" "}
+        Festivos en Colombia {month ? monthsOptions.options[month] : ''}{' '}
         {props.year}
       </h1>
       {props.year && (
@@ -70,7 +70,7 @@ const Header = props => {
         </div>
       )}
     </HeaderWrapper>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

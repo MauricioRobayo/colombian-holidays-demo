@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
-import styled from "styled-components/macro";
-import PrettyDate from "./PrettyDate";
-import Countdown from "./Countdown";
-import Header from "./Header";
-import Main from "./Main";
+import React, { Fragment } from 'react'
+import styled from 'styled-components/macro'
+import PrettyDate from './PrettyDate'
+import Countdown from './Countdown'
+import Header from './Header'
+import Main from './Main'
 
 const HolidaysListWrapper = styled(Main)`
   time {
@@ -40,10 +40,10 @@ const HolidaysListWrapper = styled(Main)`
       }
     }
   }
-`;
+`
 
 const HolidaysList = props => {
-  const date = new Date();
+  const date = new Date()
   return (
     <Fragment>
       <Header {...props} />
@@ -51,28 +51,27 @@ const HolidaysList = props => {
         <ul>
           {props.holidays.map((holiday, index, array) => {
             // Ajustamos a la zona horaria de Colombia
-            const holidayDate = new Date(`${holiday.date}T05:00`);
-            const currentYear =
-              holidayDate.getFullYear() === date.getFullYear();
-            const inactive = holidayDate < date && currentYear;
-            let current = false;
+            const holidayDate = new Date(`${holiday.date}T05:00`)
+            const currentYear = holidayDate.getFullYear() === date.getFullYear()
+            const inactive = holidayDate < date && currentYear
+            let current = false
             if (index) {
               const previousIsActive =
-                new Date(`${array[index - 1].date}T05:00`) < date;
-              current = currentYear && inactive !== previousIsActive;
+                new Date(`${array[index - 1].date}T05:00`) < date
+              current = currentYear && inactive !== previousIsActive
             }
             return (
-              <li key={holiday.name} className={inactive ? "inactive" : ""}>
+              <li key={holiday.name} className={inactive ? 'inactive' : ''}>
                 <h3>{holiday.name}</h3>
                 <PrettyDate date={holiday.date} />
                 {current && <Countdown date={holiday.date} />}
               </li>
-            );
+            )
           })}
         </ul>
       </HolidaysListWrapper>
     </Fragment>
-  );
-};
+  )
+}
 
-export default HolidaysList;
+export default HolidaysList

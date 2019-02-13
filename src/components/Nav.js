@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components/macro";
-import { Link } from "react-router-dom";
+import React from 'react'
+import styled from 'styled-components/macro'
+import { Link } from 'react-router-dom'
 
 const NavWrapper = styled.nav`
   background-color: ${({ theme }) => theme.primary};
@@ -10,14 +10,14 @@ const NavWrapper = styled.nav`
     text-decoration: none;
     color: ${({ theme }) => theme.white};
   }
-`;
+`
 
 const Nav = () => {
   return (
     <NavWrapper>
       <Link to="/">www.FeriadosColombia.com</Link>
     </NavWrapper>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

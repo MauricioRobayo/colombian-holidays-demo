@@ -1,22 +1,22 @@
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
-import Header from "./Header";
-import Main from "./Main";
+import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
+import Header from './Header'
+import Main from './Main'
 
 const monthsNames = [
-  "enero",
-  "febrero",
-  "marzo",
-  "abril",
-  "mayo",
-  "junio",
-  "julio",
-  "agosto",
-  "septiembre",
-  "octubre",
-  "noviembre",
-  "diciembre"
-];
+  'enero',
+  'febrero',
+  'marzo',
+  'abril',
+  'mayo',
+  'junio',
+  'julio',
+  'agosto',
+  'septiembre',
+  'octubre',
+  'noviembre',
+  'diciembre',
+]
 
 const NoHolidays = props => {
   return (
@@ -24,7 +24,7 @@ const NoHolidays = props => {
       <Header {...props} />
       <Main>
         <p>
-          No hay festivos durante {monthsNames[parseInt(props.month, 10) - 1]}{" "}
+          No hay festivos durante {monthsNames[parseInt(props.month, 10) - 1]}{' '}
           de <Link to={`/${props.year}`}>{props.year}</Link>.
         </p>
         <p>
@@ -34,7 +34,7 @@ const NoHolidays = props => {
         </p>
       </Main>
     </Fragment>
-  );
-};
+  )
+}
 
-export default NoHolidays;
+export default NoHolidays

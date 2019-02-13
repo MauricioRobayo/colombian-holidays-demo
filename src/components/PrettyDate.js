@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const PrettyDate = props => (
   <time dateTime={props.date}>
@@ -6,17 +6,17 @@ const PrettyDate = props => (
       weekday: props.weekday,
       year: props.year,
       month: props.month,
-      day: props.day
+      day: props.day,
     }).format(new Date(`${props.date}T05:00Z`))}
   </time>
-);
+)
 
 PrettyDate.defaultProps = {
-  locale: "default",
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric"
-};
+  locale: 'default',
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}
 
-export default PrettyDate;
+export default PrettyDate
