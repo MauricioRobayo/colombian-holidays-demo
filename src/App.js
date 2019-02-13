@@ -7,7 +7,6 @@ import {
   Redirect,
 } from 'react-router-dom'
 import HolidaysContainer from './containers/HolidaysContainer'
-import Nav from './components/Nav'
 import Footer from './components/Footer'
 import NoMatch from './components/NoMatch'
 
@@ -43,7 +42,6 @@ const App = () => (
     <Router>
       <Fragment>
         <GlobalStyle />
-        <Nav />
         <Switch>
           <Redirect exact from="/" to={`/${new Date().getFullYear()}`} />
           <Route
