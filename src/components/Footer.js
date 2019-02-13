@@ -15,7 +15,7 @@ const StyledFooter = styled.footer`
 
 const Footer = () => (
   <StyledFooter>
-    <p>¿Algo por mejorar?</p>
+    <a href="/">www.feriadoscolombia.com</a>
     <p>Esta es una página de código abierto.</p>
     <p>
       <a href="https://github.com/archemiro/pascua.archemiro.com">
