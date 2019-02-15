@@ -6,9 +6,9 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom'
-import HolidaysContainer from './containers/HolidaysContainer'
-import Footer from './components/Footer'
-import NoMatch from './components/NoMatch'
+import HolidaysContainer from './Holidays'
+import Footer from '../components/Footer'
+import NoMatch from '../components/NoMatch'
 
 const defaultTheme = {
   dark: '#444',
