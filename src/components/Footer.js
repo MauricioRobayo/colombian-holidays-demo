@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react'
+import styled from 'styled-components/macro'
 
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.primary};
@@ -11,11 +11,11 @@ const StyledFooter = styled.footer`
   span {
     font-size: 2rem;
   }
-`;
+`
 
 const Footer = () => (
   <StyledFooter>
-    <p>¿Algo por mejorar?</p>
+    <a href="/">www.feriadoscolombia.com</a>
     <p>Esta es una página de código abierto.</p>
     <p>
       <a href="https://github.com/archemiro/pascua.archemiro.com">
@@ -28,6 +28,6 @@ const Footer = () => (
       </span>
     </p>
   </StyledFooter>
-);
+)
 
-export default Footer;
+export default Footer

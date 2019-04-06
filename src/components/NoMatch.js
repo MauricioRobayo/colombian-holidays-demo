@@ -1,15 +1,15 @@
-import React, { Fragment } from "react";
-import styled from "styled-components";
-import Dropdown from "./Dropdown";
-import Header from "./Header";
-import Main from "./Main";
+import React, { Fragment } from 'react'
+import styled from 'styled-components'
+import Dropdown from './Dropdown'
+import Header from './Header'
+import Main from './Main'
 
 const NotFoundWrapper = styled(Main)`
   font-size: 2rem;
   select {
     border-bottom: 4px solid ${props => props.theme.grey};
   }
-`;
+`
 
 const NotFound = props => {
   return (
@@ -19,7 +19,7 @@ const NotFound = props => {
         {props.message ? (
           <Fragment>
             <p role="img" aria-label="not-found">
-              {props.emoji || "🤔"}
+              {props.emoji || '🤔'}
             </p>
             <p>{props.message}</p>
           </Fragment>
@@ -34,7 +34,7 @@ const NotFound = props => {
         ) : null}
       </NotFoundWrapper>
     </Fragment>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound

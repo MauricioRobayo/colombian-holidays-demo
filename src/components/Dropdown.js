@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const DropdownWrapper = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ const DropdownWrapper = styled.div`
   cursor: pointer;
   margin: 0.5rem;
   &:after {
-    content: "";
+    content: '';
     width: 0;
     height: 0;
     border-style: solid;
@@ -38,7 +38,7 @@ const DropdownWrapper = styled.div`
       outline: 0;
     }
   }
-`;
+`
 
 const Dropdown = props => {
   return (
@@ -46,14 +46,14 @@ const Dropdown = props => {
       <select
         name={props.name}
         value={
-          props.selected || (props.name === "year" ? props.placeholder : "00")
+          props.selected || (props.name === 'year' ? props.placeholder : '00')
         }
         onChange={props.onChangeHandler}
       >
         {[props.placeholder].concat(props.options).map((option, index) => (
           <option
             key={option}
-            value={props.name === "year" ? option : `0${index}`.slice(-2)}
+            value={props.name === 'year' ? option : `0${index}`.slice(-2)}
             disabled={option === props.placeholder}
             hidden={option === props.placeholder}
           >
@@ -62,7 +62,7 @@ const Dropdown = props => {
         ))}
       </select>
     </DropdownWrapper>
-  );
-};
+  )
+}
 
-export default Dropdown;
+export default Dropdown
