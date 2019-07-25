@@ -3,7 +3,7 @@ notifications:
   email:
     on_failure: always
 node_js:
-  - "8.10"
+  - "10.16.0"
 before_install:
   - pip install --user awscli
 script:
