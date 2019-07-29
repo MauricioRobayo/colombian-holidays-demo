@@ -38,13 +38,13 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/archemiro/www.feriadoscolombia.com.git"
+    "url": "git+https://github.com/MauricioRobayo/www.feriadoscolombia.com.git"
   },
   "keywords": [],
-  "author": "Mauricio Robayo <archemiro@gmail.com> (https://www.archemiro.com)",
+  "author": "Mauricio Robayo <rfmajo@gmail.com> (https://www.archemiro.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/archemiro/www.feriadoscolombia.com/issues"
+    "url": "https://github.com/MauricioRobayo/www.feriadoscolombia.com/issues"
   },
   "homepage": "https://www.feriadoscolombia.com"
 }
