@@ -1,11 +1,6 @@
 import React, { Fragment } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components/macro'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import HolidaysContainer from './Holidays'
 import Footer from '../components/Footer'
 import NoMatch from '../components/NoMatch'
