@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/festivos-colombia/static/js/main.f716d804.chunk.js",
+    "main.js.map": "/festivos-colombia/static/js/main.f716d804.chunk.js.map",
+    "runtime~main.js": "/festivos-colombia/static/js/runtime~main.db6b3721.js",
+    "runtime~main.js.map": "/festivos-colombia/static/js/runtime~main.db6b3721.js.map",
+    "static/js/2.44926ce0.chunk.js": "/festivos-colombia/static/js/2.44926ce0.chunk.js",
+    "static/js/2.44926ce0.chunk.js.map": "/festivos-colombia/static/js/2.44926ce0.chunk.js.map",
+    "index.html": "/festivos-colombia/index.html",
+    "precache-manifest.d7d8193bc0c5bbb7a8dd4de8c1c6740f.js": "/festivos-colombia/precache-manifest.d7d8193bc0c5bbb7a8dd4de8c1c6740f.js",
+    "service-worker.js": "/festivos-colombia/service-worker.js"
+  }
+}
