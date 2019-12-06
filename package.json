@@ -18,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "aws s3 sync build s3://www.feriadoscolombia.com --acl public-read --delete"
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
