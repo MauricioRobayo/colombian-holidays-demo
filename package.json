@@ -2,6 +2,7 @@
   "name": "www.feriadoscolombia.com",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mauriciorobayo.github.io/festivos-colombia",
   "dependencies": {
     "pascua": "^1.1.7",
     "react": "^16.7.0",
@@ -45,6 +46,5 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MauricioRobayo/www.feriadoscolombia.com/issues"
-  },
-  "homepage": "https://www.feriadoscolombia.com"
+  }
 }
