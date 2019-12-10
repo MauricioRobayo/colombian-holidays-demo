@@ -64,7 +64,11 @@ const HolidaysList = props => {
               <li key={holiday.name} className={inactive ? 'inactive' : ''}>
                 <h3>{holiday.name}</h3>
                 <PrettyDate date={holiday.date} />
-                {current && <Countdown date={holiday.date} />}
+                <Countdown
+                  date={holiday.date}
+                  inactive={inactive}
+                  current={current}
+                />
               </li>
             )
           })}
