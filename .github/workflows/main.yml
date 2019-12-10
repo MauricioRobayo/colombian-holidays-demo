@@ -43,8 +43,9 @@ jobs:
         run: npm test
 
   deploy:
-    needs: build-and-test
     runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/master'
 
     steps:
       - name: Download build
