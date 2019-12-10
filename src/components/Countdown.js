@@ -15,20 +15,15 @@ const CountDown = props => {
   const timeDiff = new Date(props.date) - new Date()
   const day = 1000 * 60 * 60 * 24 // milliseconds * seconds * minutes * hours
   const remainingDays = Math.ceil(timeDiff / day)
-  const rtf =
-    typeof Intl.RelativeTimeFormat === 'function'
-      ? new Intl.RelativeTimeFormat('es', {
-          numeric: props.numeric,
-        })
-      : {
-          format(remainingDays) {
-            if (remainingDays === 1) {
-              return 'mañana'
-            }
-            return `faltan ${remainingDays} días`
-          },
-        }
-  return <CountDownWrapper>{rtf.format(remainingDays, 'day')}</CountDownWrapper>
+  if (typeof Intl.RelativeTimeFormat === 'function') {
+    const rtf = new Intl.RelativeTimeFormat('es', {
+      numeric: props.numeric,
+    })
+    return (
+      <CountDownWrapper>{rtf.format(remainingDays, 'day')}</CountDownWrapper>
+    )
+  }
+  return null
 }
 
 CountDown.defaultProps = {
