@@ -6,7 +6,7 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     env:
-      - CI: true
+      CI: true
 
     steps:
       - name: Checkout
