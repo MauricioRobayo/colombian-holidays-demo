@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/festivos-colombia/static/js/main.101d64f7.chunk.js",
-    "main.js.map": "/festivos-colombia/static/js/main.101d64f7.chunk.js.map",
+    "main.js": "/festivos-colombia/static/js/main.285d8263.chunk.js",
+    "main.js.map": "/festivos-colombia/static/js/main.285d8263.chunk.js.map",
     "runtime-main.js": "/festivos-colombia/static/js/runtime-main.da6d350d.js",
     "runtime-main.js.map": "/festivos-colombia/static/js/runtime-main.da6d350d.js.map",
-    "static/js/2.26cb6322.chunk.js": "/festivos-colombia/static/js/2.26cb6322.chunk.js",
-    "static/js/2.26cb6322.chunk.js.map": "/festivos-colombia/static/js/2.26cb6322.chunk.js.map",
+    "static/js/2.ee4cd5f0.chunk.js": "/festivos-colombia/static/js/2.ee4cd5f0.chunk.js",
+    "static/js/2.ee4cd5f0.chunk.js.map": "/festivos-colombia/static/js/2.ee4cd5f0.chunk.js.map",
     "index.html": "/festivos-colombia/index.html",
-    "precache-manifest.720160ee505705ea5d177916500067b8.js": "/festivos-colombia/precache-manifest.720160ee505705ea5d177916500067b8.js",
+    "precache-manifest.0d917ead01a3d428e429c5e19fc5a0c9.js": "/festivos-colombia/precache-manifest.0d917ead01a3d428e429c5e19fc5a0c9.js",
     "service-worker.js": "/festivos-colombia/service-worker.js",
-    "static/js/2.26cb6322.chunk.js.LICENSE": "/festivos-colombia/static/js/2.26cb6322.chunk.js.LICENSE"
+    "static/js/2.ee4cd5f0.chunk.js.LICENSE": "/festivos-colombia/static/js/2.ee4cd5f0.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.da6d350d.js",
-    "static/js/2.26cb6322.chunk.js",
-    "static/js/main.101d64f7.chunk.js"
+    "static/js/2.ee4cd5f0.chunk.js",
+    "static/js/main.285d8263.chunk.js"
   ]
 }
