@@ -41,12 +41,15 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MauricioRobayo/www.feriadoscolombia.com.git"
+    "url": "git+https://github.com/MauricioRobayo/festivos-colombia.git"
   },
-  "keywords": [],
-  "author": "Mauricio Robayo <rfmajo@gmail.com> (https://www.archemiro.com)",
+  "keywords": [
+    "holidays",
+    "Colombia"
+  ],
+  "author": "Mauricio Robayo <rfmajo@gmail.com> (https://www.mauriciorobayo.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MauricioRobayo/www.feriadoscolombia.com/issues"
+    "url": "https://github.com/MauricioRobayo/festivos-colombia/issues"
   }
 }
