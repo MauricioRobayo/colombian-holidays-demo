@@ -20,7 +20,8 @@ const CountDownWrapper = styled.div`
   &.inactive {
     background-color: inherit;
     color: ${({ theme }) => theme.danger};
-    opacity: 0.5;
+    text-decoration: line-through;
+    opacity: 0.75;
     font-size: 0.75rem;
     padding: 0.15rem 0.25rem;
   }
