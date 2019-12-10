@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/festivos-colombia/precache-manifest.0d917ead01a3d428e429c5e19fc5a0c9.js"
+  "/festivos-colombia/precache-manifest.4c54b96944b1d122ea42c3f80854c2f6.js"
 );
 
 self.addEventListener('message', (event) => {
