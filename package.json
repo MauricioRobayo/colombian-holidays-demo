@@ -60,5 +60,18 @@
     "semi": false,
     "trailingComma": "all",
     "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.js": ["eslint --fix", "git add"]
   }
 }
