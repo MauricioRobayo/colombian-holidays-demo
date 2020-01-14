@@ -1,8 +1,8 @@
 {
-  "name": "festivos-colombia",
+  "name": "colombian-holidays",
   "version": "0.0.0-semantic-release",
   "private": true,
-  "homepage": "https://mauriciorobayo.github.io/festivos-colombia",
+  "homepage": "https://mauriciorobayo.github.io/colombian-holidays",
   "dependencies": {
     "pascua": "^1.1.7",
     "react": "^16.7.0",
@@ -41,16 +41,20 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MauricioRobayo/festivos-colombia.git"
+    "url": "git+https://github.com/MauricioRobayo/colombian-holidays.git"
   },
   "keywords": [
     "holidays",
-    "Colombia"
+    "Colombia",
+    "Festivos",
+    "Feriados",
+    "Festivos en Colombia",
+    "Colombian holidays"
   ],
-  "author": "Mauricio Robayo <rfmajo@gmail.com> (https://www.mauriciorobayo.com)",
+  "author": "Mauricio Robayo <hi@mauriciorobayo.com> (https://www.mauriciorobayo.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MauricioRobayo/festivos-colombia/issues"
+    "url": "https://github.com/MauricioRobayo/colombian-holidays/issues"
   },
   "prettier": {
     "semi": false,
