@@ -2,10 +2,12 @@ import React from 'react'
 import styled from 'styled-components/macro'
 
 const MainWrapper = styled.main`
-  max-width: ${props => props.theme.maxWidth};
-  margin: auto;
   text-align: center;
   padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   time {
     display: block;
   }
@@ -13,9 +15,16 @@ const MainWrapper = styled.main`
     text-transform: uppercase;
   }
 `
+const MainContentWrapper = styled.div`
+  max-width: ${props => props.theme.maxWidth};
+`
 
 const Main = ({ children, className }) => {
-  return <MainWrapper className={className}>{children}</MainWrapper>
+  return (
+    <MainWrapper className={className}>
+      <MainContentWrapper>{children}</MainContentWrapper>
+    </MainWrapper>
+  )
 }
 
 export default Main

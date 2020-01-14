@@ -6,13 +6,14 @@ import Header from './Header'
 import Main from './Main'
 
 const HolidaysListWrapper = styled(Main)`
+  height: auto;
   time {
     display: block;
   }
   time::first-letter {
     text-transform: uppercase;
   }
-  > ul {
+  ul {
     list-style: none;
     padding: 0;
     margin: 0;
