@@ -30,6 +30,11 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
     color: ${defaultTheme.dark};
   }
+  #root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const App = () => (

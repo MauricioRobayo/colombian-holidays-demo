@@ -5,7 +5,6 @@ import styled from 'styled-components'
 const HeaderWrapper = styled.header`
   background-color: ${props => props.theme.primary};
   padding: 1rem 1rem 3rem;
-  margin: 0 auto;
   border-bottom: 6px solid ${props => props.theme.danger};
   color: ${props => props.theme.white};
   .dropdowns {

@@ -4,7 +4,8 @@ import styled from 'styled-components/macro'
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.white};
-  padding: 2rem 1rem;
+  padding: 3rem 1rem 1rem;
+  margin-top: auto;
   a {
     color: ${({ theme }) => theme.white};
   }
