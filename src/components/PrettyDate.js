@@ -12,7 +12,7 @@ const PrettyDate = props => (
 )
 
 PrettyDate.defaultProps = {
-  locale: 'es',
+  locale: 'en',
   weekday: 'long',
   year: 'numeric',
   month: 'long',

@@ -51,7 +51,7 @@ const App = () => (
           />
           <Route
             render={props => (
-              <NoMatch {...props} message="Algo no tiene sentido." />
+              <NoMatch {...props} message="Something doesn't make sense." />
             )}
           />
         </Switch>

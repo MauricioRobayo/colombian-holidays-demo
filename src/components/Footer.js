@@ -4,7 +4,7 @@ import styled from 'styled-components/macro'
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.white};
-  padding: 3rem 1rem 1rem;
+  padding: 2rem 1rem 1rem;
   margin-top: auto;
   a {
     color: ${({ theme }) => theme.white};
@@ -16,15 +16,13 @@ const StyledFooter = styled.footer`
 
 const Footer = () => (
   <StyledFooter>
-    <a href="/">www.feriadoscolombia.com</a>
-    <p>Esta es una página de código abierto.</p>
     <p>
-      <a href="https://github.com/archemiro/pascua.archemiro.com">
-        Puede contribuir acá.
+      <a href="https://github.com/mauriciorobayo/colombianholidays">
+        This is an open source project.
       </a>
     </p>
     <p>
-      <span role="img" aria-label="Fuegos artificiales">
+      <span role="img" aria-label="Fireworks">
         🎆
       </span>
     </p>

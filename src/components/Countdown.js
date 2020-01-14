@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import ReactTimeAgo from 'react-time-ago'
 import JavascriptTimeAgo from 'javascript-time-ago'
-import es from 'javascript-time-ago/locale/es'
+import en from 'javascript-time-ago/locale/en'
 
-JavascriptTimeAgo.locale(es)
+JavascriptTimeAgo.locale(en)
 
 const CountDownWrapper = styled.div`
   margin: 0.15rem auto;
@@ -34,7 +34,7 @@ const CountDown = props => {
         props.current ? 'current' : ''
       }`}
     >
-      <ReactTimeAgo date={props.date} locale="es" />
+      <ReactTimeAgo date={props.date} locale="en" />
     </CountDownWrapper>
   )
 }

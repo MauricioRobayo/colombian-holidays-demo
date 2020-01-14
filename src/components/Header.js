@@ -28,23 +28,23 @@ const Header = props => {
   const month = props.month && parseInt(props.month, 10) - 1
   const daysOptions = {
     name: 'day',
-    placeholder: 'día',
+    placeholder: 'day',
     options: props.days,
   }
   const yearsOptions = {
     name: 'year',
-    placeholder: 'año',
+    placeholder: 'year',
     options: props.years,
   }
   const monthsOptions = {
     name: 'month',
-    placeholder: 'mes',
+    placeholder: 'month',
     options: props.months,
   }
   return (
     <HeaderWrapper>
       <h1>
-        Festivos en Colombia {month ? monthsOptions.options[month] : ''}{' '}
+        Colombian Holidays {month ? monthsOptions.options[month] : ''}{' '}
         {props.year}
       </h1>
       {props.year && (

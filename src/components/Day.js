@@ -19,13 +19,13 @@ const Day = props => {
       <DayWrapper>
         <PrettyDate date={props.date} />
         {props.isHoliday ? (
-          <p className="celebrate">ES FESTIVO</p>
+          <p className="celebrate">HOLIDAY</p>
         ) : (
-          <p>NO ES FESTIVO</p>
+          <p>NOT HOLIDAY</p>
         )}
         <span
           role="img"
-          aria-label={props.isHoliday ? 'es festivo' : 'no es festivo'}
+          aria-label={props.isHoliday ? 'holiday' : 'not holiday'}
         >
           {props.isHoliday ? '😄' : '😥'}
         </span>

@@ -4,18 +4,18 @@ import Header from './Header'
 import Main from './Main'
 
 const monthsNames = [
-  'enero',
-  'febrero',
-  'marzo',
-  'abril',
-  'mayo',
-  'junio',
-  'julio',
-  'agosto',
-  'septiembre',
-  'octubre',
-  'noviembre',
-  'diciembre',
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ]
 
 const NoHolidays = props => {
@@ -24,11 +24,11 @@ const NoHolidays = props => {
       <Header {...props} />
       <Main>
         <p>
-          No hay festivos durante {monthsNames[parseInt(props.month, 10) - 1]}{' '}
-          de <Link to={`/${props.year}`}>{props.year}</Link>.
+          No holidays during {monthsNames[parseInt(props.month, 10) - 1]}{' '}
+          <Link to={`/${props.year}`}>{props.year}</Link>.
         </p>
         <p>
-          <span role="img" aria-label="no hay festivos">
+          <span role="img" aria-label="no holidays">
             😥
           </span>
         </p>

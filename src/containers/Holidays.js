@@ -45,18 +45,18 @@ class HolidaysContainer extends Component {
 
   getMonths() {
     return [
-      'enero',
-      'febrero',
-      'marzo',
-      'abril',
-      'mayo',
-      'junio',
-      'julio',
-      'agosto',
-      'septiembre',
-      'octubre',
-      'noviembre',
-      'diciembre',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
     ]
   }
 
@@ -128,7 +128,7 @@ class HolidaysContainer extends Component {
       return (
         <NoMatch
           {...yearsOptions}
-          message="Al parecer no contamos con esa información."
+          message="It seems like we don't have that information."
           onChangeHandler={this.onChangeHandler}
         />
       )

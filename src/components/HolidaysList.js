@@ -51,7 +51,7 @@ const HolidaysList = props => {
       <HolidaysListWrapper>
         <ul>
           {props.holidays.map((holiday, index, array) => {
-            // Ajustamos a la zona horaria de Colombia
+            // Colombian timezone adjustment
             const holidayDate = new Date(`${holiday.date}T05:00`)
             const currentYear = holidayDate.getFullYear() === date.getFullYear()
             const inactive = holidayDate < date && currentYear
