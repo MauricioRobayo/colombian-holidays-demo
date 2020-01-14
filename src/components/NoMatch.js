@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Dropdown from './Dropdown'
 import Header from './Header'
@@ -13,16 +13,16 @@ const NotFoundWrapper = styled(Main)`
 
 const NotFound = props => {
   return (
-    <Fragment>
+    <>
       <Header />
       <NotFoundWrapper>
         {props.message ? (
-          <Fragment>
+          <>
             <p role="img" aria-label="not-found">
               {props.emoji || '🤔'}
             </p>
             <p>{props.message}</p>
-          </Fragment>
+          </>
         ) : null}
         {props.options ? (
           <Dropdown
@@ -33,7 +33,7 @@ const NotFound = props => {
           />
         ) : null}
       </NotFoundWrapper>
-    </Fragment>
+    </>
   )
 }
 

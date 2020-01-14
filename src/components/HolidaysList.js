@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
 import PrettyDate from './PrettyDate'
 import Countdown from './Countdown'
@@ -46,7 +46,7 @@ const HolidaysListWrapper = styled(Main)`
 const HolidaysList = props => {
   const date = new Date()
   return (
-    <Fragment>
+    <>
       <Header {...props} />
       <HolidaysListWrapper>
         <ul>
@@ -75,7 +75,7 @@ const HolidaysList = props => {
           })}
         </ul>
       </HolidaysListWrapper>
-    </Fragment>
+    </>
   )
 }
 

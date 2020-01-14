@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import PrettyDate from './PrettyDate'
 import Header from './Header'
@@ -14,7 +14,7 @@ const DayWrapper = styled(Main)`
 
 const Day = props => {
   return (
-    <Fragment>
+    <>
       <Header {...props} />
       <DayWrapper>
         <PrettyDate date={props.date} />
@@ -30,7 +30,7 @@ const Day = props => {
           {props.isHoliday ? '😄' : '😥'}
         </span>
       </DayWrapper>
-    </Fragment>
+    </>
   )
 }
 

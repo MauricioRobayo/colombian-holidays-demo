@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Header from './Header'
 import Main from './Main'
@@ -20,7 +20,7 @@ const monthsNames = [
 
 const NoHolidays = props => {
   return (
-    <Fragment>
+    <>
       <Header {...props} />
       <Main>
         <p>
@@ -33,7 +33,7 @@ const NoHolidays = props => {
           </span>
         </p>
       </Main>
-    </Fragment>
+    </>
   )
 }
 
