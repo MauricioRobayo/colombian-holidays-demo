@@ -17,9 +17,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "browserslist": [
     ">0.2%",
@@ -31,13 +29,11 @@
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
     "eslint-config-prettier": "^6.0.0",
-    "gh-pages": "^2.1.1",
     "husky": "^4.0.2",
     "lint-staged": "^9.0.0",
-    "prettier": "^1.16.4",
-    "semantic-release": "^16.0.0"
+    "prettier": "^1.16.4"
   },
-  "description": "Festivos en Colombia",
+  "description": "React app to get Colombian holidays for any given year",
   "main": "index.js",
   "repository": {
     "type": "git",
