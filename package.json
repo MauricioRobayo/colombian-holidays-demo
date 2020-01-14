@@ -2,7 +2,7 @@
   "name": "colombian-holidays",
   "version": "0.0.0-semantic-release",
   "private": true,
-  "homepage": "https://mauriciorobayo.github.io/colombian-holidays",
+  "homepage": "https://www.mauriciorobayo.com/colombian-holidays",
   "dependencies": {
     "pascua": "^1.1.7",
     "react": "^16.7.0",
