@@ -51,5 +51,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MauricioRobayo/festivos-colombia/issues"
+  },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "all",
+    "singleQuote": true
   }
 }
