@@ -18,7 +18,7 @@ class HolidaysContainer extends Component {
     months: this.getMonths(),
     days: this.getDays(
       this.props.match.params.year,
-      this.props.match.params.month
+      this.props.match.params.month,
     ),
     holidays: this.getHolidays(this.props.match.params.year),
   }
@@ -103,7 +103,7 @@ class HolidaysContainer extends Component {
         month: this.props.match.params.month,
         days: this.getDays(
           this.props.match.params.year,
-          this.props.match.params.month
+          this.props.match.params.month,
         ),
       })
     }
@@ -136,7 +136,7 @@ class HolidaysContainer extends Component {
     if (this.state.day) {
       const date = `${this.state.year}-${this.state.month}-${this.state.day}`
       const isHoliday = this.state.holidays.find(
-        holiday => holiday.date === date
+        holiday => holiday.date === date,
       )
       return (
         <Day
@@ -149,7 +149,7 @@ class HolidaysContainer extends Component {
     }
     const holidays = this.state.month
       ? this.state.holidays.filter(
-          holiday => holiday.date.split('-')[1] === this.state.month
+          holiday => holiday.date.split('-')[1] === this.state.month,
         )
       : this.state.holidays
     if (this.state.month && holidays.length === 0) {
