@@ -30,7 +30,7 @@
     "@commitlint/config-conventional": "^8.3.4",
     "eslint-config-prettier": "^6.0.0",
     "husky": "^4.0.2",
-    "lint-staged": "^9.0.0",
+    "lint-staged": "^10.0.3",
     "prettier": "^1.16.4"
   },
   "description": "React app to get Colombian holidays for any given year",
