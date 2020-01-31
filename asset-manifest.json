@@ -4,16 +4,16 @@
     "main.js.map": "/colombian-holidays/static/js/main.a14a96e8.chunk.js.map",
     "runtime-main.js": "/colombian-holidays/static/js/runtime-main.ddec7631.js",
     "runtime-main.js.map": "/colombian-holidays/static/js/runtime-main.ddec7631.js.map",
-    "static/js/2.8a7ed84e.chunk.js": "/colombian-holidays/static/js/2.8a7ed84e.chunk.js",
-    "static/js/2.8a7ed84e.chunk.js.map": "/colombian-holidays/static/js/2.8a7ed84e.chunk.js.map",
+    "static/js/2.df819c03.chunk.js": "/colombian-holidays/static/js/2.df819c03.chunk.js",
+    "static/js/2.df819c03.chunk.js.map": "/colombian-holidays/static/js/2.df819c03.chunk.js.map",
     "index.html": "/colombian-holidays/index.html",
-    "precache-manifest.d2c7f92355868bcda08fd83a4a1e6dd9.js": "/colombian-holidays/precache-manifest.d2c7f92355868bcda08fd83a4a1e6dd9.js",
+    "precache-manifest.507157499dedcb7c867909c955ca7cf4.js": "/colombian-holidays/precache-manifest.507157499dedcb7c867909c955ca7cf4.js",
     "service-worker.js": "/colombian-holidays/service-worker.js",
-    "static/js/2.8a7ed84e.chunk.js.LICENSE": "/colombian-holidays/static/js/2.8a7ed84e.chunk.js.LICENSE"
+    "static/js/2.df819c03.chunk.js.LICENSE.txt": "/colombian-holidays/static/js/2.df819c03.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ddec7631.js",
-    "static/js/2.8a7ed84e.chunk.js",
+    "static/js/2.df819c03.chunk.js",
     "static/js/main.a14a96e8.chunk.js"
   ]
 }
