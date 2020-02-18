@@ -17,7 +17,7 @@ const StyledFooter = styled.footer`
 const Footer = () => (
   <StyledFooter>
     <p>
-      <a href="https://github.com/mauriciorobayo/colombianholidays">
+      <a href="https://github.com/mauriciorobayo/colombian-holidays">
         This is an open source project.
       </a>
     </p>
