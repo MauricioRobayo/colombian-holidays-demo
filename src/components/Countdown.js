@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 import ReactTimeAgo from 'react-time-ago'
 import JavascriptTimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
+import { Link } from 'react-router-dom'
 
 JavascriptTimeAgo.locale(en)
 
@@ -11,19 +12,26 @@ const CountDownWrapper = styled.div`
   display: inline-block;
   font-size: 0.85rem;
   padding: 0.35rem 0.5rem 0.25rem;
-  color: ${({ theme }) => theme.success};
   border-radius: 4px;
+  a {
+    color: ${({ theme }) => theme.success};
+    text-decoration: none;
+  }
   &.current {
     background-color: ${({ theme }) => theme.success};
-    color: white;
+    a {
+      color: white;
+    }
   }
   &.inactive {
     background-color: inherit;
-    color: ${({ theme }) => theme.danger};
     text-decoration: line-through;
     opacity: 0.75;
     font-size: 0.75rem;
     padding: 0.15rem 0.25rem;
+    a {
+      color: ${({ theme }) => theme.danger};
+    }
   }
 `
 
@@ -34,7 +42,9 @@ const CountDown = props => {
         props.current ? 'current' : ''
       }`}
     >
-      <ReactTimeAgo date={props.date} locale="en" />
+      <Link to={`/${props.date.replace(/-/g, '/')}`}>
+        <ReactTimeAgo date={props.date} locale="en" />
+      </Link>
     </CountDownWrapper>
   )
 }
