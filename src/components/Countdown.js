@@ -35,16 +35,14 @@ const CountDownWrapper = styled.div`
   }
 `
 
-const CountDown = ({ inactive, current, date }) => {
-  return (
-    <CountDownWrapper
-      className={`${inactive ? 'inactive' : ''} ${current ? 'current' : ''}`}
-    >
-      <Link to={`/${date.replace(/-/g, '/')}`}>
-        <ReactTimeAgo date={date} locale="en" />
-      </Link>
-    </CountDownWrapper>
-  )
-}
+const CountDown = ({ inactive, current, date }) => (
+  <CountDownWrapper
+    className={`${inactive ? 'inactive' : ''} ${current ? 'current' : ''}`}
+  >
+    <Link to={`/${date.replace(/-/g, '/')}`}>
+      <ReactTimeAgo date={date} locale="en" />
+    </Link>
+  </CountDownWrapper>
+)
 
 export default CountDown
