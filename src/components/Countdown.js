@@ -35,15 +35,13 @@ const CountDownWrapper = styled.div`
   }
 `
 
-const CountDown = props => {
+const CountDown = ({ inactive, current, date }) => {
   return (
     <CountDownWrapper
-      className={`${props.inactive ? 'inactive' : ''} ${
-        props.current ? 'current' : ''
-      }`}
+      className={`${inactive ? 'inactive' : ''} ${current ? 'current' : ''}`}
     >
-      <Link to={`/${props.date.replace(/-/g, '/')}`}>
-        <ReactTimeAgo date={props.date} locale="en" />
+      <Link to={`/${date.replace(/-/g, '/')}`}>
+        <ReactTimeAgo date={date} locale="en" />
       </Link>
     </CountDownWrapper>
   )
