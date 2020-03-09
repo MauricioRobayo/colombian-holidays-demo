@@ -40,21 +40,25 @@ const DropdownWrapper = styled.div`
   }
 `
 
-const Dropdown = props => (
+const Dropdown = ({
+  name,
+  placeholder,
+  selected,
+  options,
+  onChangeHandler,
+}) => (
   <DropdownWrapper>
     <select
-      name={props.name}
-      value={
-        props.selected || (props.name === 'year' ? props.placeholder : '00')
-      }
-      onChange={props.onChangeHandler}
+      name={name}
+      value={selected || (name === 'year' ? placeholder : '00')}
+      onChange={onChangeHandler}
     >
-      {[props.placeholder].concat(props.options).map((option, index) => (
+      {[placeholder].concat(options).map((option, index) => (
         <option
           key={option}
-          value={props.name === 'year' ? option : `0${index}`.slice(-2)}
-          disabled={option === props.placeholder}
-          hidden={option === props.placeholder}
+          value={name === 'year' ? option : `0${index}`.slice(-2)}
+          disabled={option === placeholder}
+          hidden={option === placeholder}
         >
           {option}
         </option>

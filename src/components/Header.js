@@ -24,46 +24,46 @@ const HeaderWrapper = styled.header`
   }
 `
 
-const Header = props => {
-  const month = props.month && parseInt(props.month, 10) - 1
+const Header = ({ day, month, year, days, months, years, onChangeHandler }) => {
+  const monthNumber = month && parseInt(month, 10) - 1
   const daysOptions = {
     name: 'day',
     placeholder: 'day',
-    options: props.days,
+    options: days,
   }
   const yearsOptions = {
     name: 'year',
     placeholder: 'year',
-    options: props.years,
+    options: years,
   }
   const monthsOptions = {
     name: 'month',
     placeholder: 'month',
-    options: props.months,
+    options: months,
   }
   return (
     <HeaderWrapper>
       <h1>
-        Colombian Holidays {month ? monthsOptions.options[month] : ''}{' '}
-        {props.year}
+        Colombian Holidays{' '}
+        {monthNumber ? monthsOptions.options[monthNumber] : ''} {year}
       </h1>
-      {props.year && (
+      {year && (
         <div className="dropdowns">
           <Dropdown
             {...yearsOptions}
-            onChangeHandler={props.onChangeHandler}
-            selected={props.year}
+            onChangeHandler={onChangeHandler}
+            selected={year}
           />
           <Dropdown
             {...monthsOptions}
-            onChangeHandler={props.onChangeHandler}
-            selected={props.month}
+            onChangeHandler={onChangeHandler}
+            selected={month}
           />
-          {props.month && (
+          {month && (
             <Dropdown
               {...daysOptions}
-              onChangeHandler={props.onChangeHandler}
-              selected={props.day}
+              onChangeHandler={onChangeHandler}
+              selected={day}
             />
           )}
         </div>

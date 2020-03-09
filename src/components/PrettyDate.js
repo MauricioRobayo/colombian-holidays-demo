@@ -1,13 +1,13 @@
 import React from 'react'
 
-const PrettyDate = props => (
-  <time dateTime={props.date}>
-    {new Intl.DateTimeFormat(props.locale, {
-      weekday: props.weekday,
-      year: props.year,
-      month: props.month,
-      day: props.day,
-    }).format(new Date(`${props.date}T05:00Z`))}
+const PrettyDate = ({ date, locale, weekday, year, month, day }) => (
+  <time dateTime={date}>
+    {new Intl.DateTimeFormat(locale, {
+      weekday,
+      year,
+      month,
+      day,
+    }).format(new Date(`${date}T05:00Z`))}
   </time>
 )
 

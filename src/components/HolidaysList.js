@@ -34,12 +34,12 @@ const HolidaysListWrapper = styled(Main)`
 `
 const date = new Date()
 
-const HolidaysList = props => (
+const HolidaysList = ({ holidays, ...props }) => (
   <>
     <Header {...props} />
     <HolidaysListWrapper>
       <ul>
-        {props.holidays.map((holiday, index, array) => {
+        {holidays.map((holiday, index, array) => {
           // Colombian timezone adjustment
           const holidayDate = new Date(`${holiday.date}T05:00`)
           const currentYear = holidayDate.getFullYear() === date.getFullYear()

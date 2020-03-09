@@ -11,26 +11,19 @@ const NotFoundWrapper = styled(Main)`
   }
 `
 
-const NotFound = props => (
+const NotFound = ({ message, emoji, options, ...props }) => (
   <>
     <Header />
     <NotFoundWrapper>
-      {props.message ? (
+      {message ? (
         <>
           <p role="img" aria-label="not-found">
-            {props.emoji || '🤔'}
+            {emoji || '🤔'}
           </p>
-          <p>{props.message}</p>
+          <p>{message}</p>
         </>
       ) : null}
-      {props.options ? (
-        <Dropdown
-          name={props.name}
-          placeholder={props.placeholder}
-          options={props.options}
-          onChangeHandler={props.onChangeHandler}
-        />
-      ) : null}
+      {options ? <Dropdown {...props} /> : null}
     </NotFoundWrapper>
   </>
 )
