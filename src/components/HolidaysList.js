@@ -32,41 +32,39 @@ const HolidaysListWrapper = styled(Main)`
     }
   }
 `
+const date = new Date()
 
-const HolidaysList = props => {
-  const date = new Date()
-  return (
-    <>
-      <Header {...props} />
-      <HolidaysListWrapper>
-        <ul>
-          {props.holidays.map((holiday, index, array) => {
-            // Colombian timezone adjustment
-            const holidayDate = new Date(`${holiday.date}T05:00`)
-            const currentYear = holidayDate.getFullYear() === date.getFullYear()
-            const inactive = holidayDate < date && currentYear
-            let current = false
-            if (index) {
-              const previousIsActive =
-                new Date(`${array[index - 1].date}T05:00`) < date
-              current = currentYear && inactive !== previousIsActive
-            }
-            return (
-              <li key={holiday.name} className={inactive ? 'inactive' : ''}>
-                <h3>{holiday.name}</h3>
-                <PrettyDate date={holiday.date} />
-                <Countdown
-                  date={holiday.date}
-                  inactive={inactive}
-                  current={current}
-                />
-              </li>
-            )
-          })}
-        </ul>
-      </HolidaysListWrapper>
-    </>
-  )
-}
+const HolidaysList = props => (
+  <>
+    <Header {...props} />
+    <HolidaysListWrapper>
+      <ul>
+        {props.holidays.map((holiday, index, array) => {
+          // Colombian timezone adjustment
+          const holidayDate = new Date(`${holiday.date}T05:00`)
+          const currentYear = holidayDate.getFullYear() === date.getFullYear()
+          const inactive = holidayDate < date && currentYear
+          let current = false
+          if (index) {
+            const previousIsActive =
+              new Date(`${array[index - 1].date}T05:00`) < date
+            current = currentYear && inactive !== previousIsActive
+          }
+          return (
+            <li key={holiday.name} className={inactive ? 'inactive' : ''}>
+              <h3>{holiday.name}</h3>
+              <PrettyDate date={holiday.date} />
+              <Countdown
+                date={holiday.date}
+                inactive={inactive}
+                current={current}
+              />
+            </li>
+          )
+        })}
+      </ul>
+    </HolidaysListWrapper>
+  </>
+)
 
 export default HolidaysList

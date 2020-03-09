@@ -40,29 +40,27 @@ const DropdownWrapper = styled.div`
   }
 `
 
-const Dropdown = props => {
-  return (
-    <DropdownWrapper>
-      <select
-        name={props.name}
-        value={
-          props.selected || (props.name === 'year' ? props.placeholder : '00')
-        }
-        onChange={props.onChangeHandler}
-      >
-        {[props.placeholder].concat(props.options).map((option, index) => (
-          <option
-            key={option}
-            value={props.name === 'year' ? option : `0${index}`.slice(-2)}
-            disabled={option === props.placeholder}
-            hidden={option === props.placeholder}
-          >
-            {option}
-          </option>
-        ))}
-      </select>
-    </DropdownWrapper>
-  )
-}
+const Dropdown = props => (
+  <DropdownWrapper>
+    <select
+      name={props.name}
+      value={
+        props.selected || (props.name === 'year' ? props.placeholder : '00')
+      }
+      onChange={props.onChangeHandler}
+    >
+      {[props.placeholder].concat(props.options).map((option, index) => (
+        <option
+          key={option}
+          value={props.name === 'year' ? option : `0${index}`.slice(-2)}
+          disabled={option === props.placeholder}
+          hidden={option === props.placeholder}
+        >
+          {option}
+        </option>
+      ))}
+    </select>
+  </DropdownWrapper>
+)
 
 export default Dropdown

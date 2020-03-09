@@ -18,23 +18,21 @@ const monthsNames = [
   'December',
 ]
 
-const NoHolidays = props => {
-  return (
-    <>
-      <Header {...props} />
-      <Main>
-        <p>
-          No holidays during {monthsNames[parseInt(props.month, 10) - 1]}{' '}
-          <Link to={`/${props.year}`}>{props.year}</Link>.
-        </p>
-        <p>
-          <span role="img" aria-label="no holidays">
-            😥
-          </span>
-        </p>
-      </Main>
-    </>
-  )
-}
+const NoHolidays = props => (
+  <>
+    <Header {...props} />
+    <Main>
+      <p>
+        No holidays during {monthsNames[parseInt(props.month, 10) - 1]}{' '}
+        <Link to={`/${props.year}`}>{props.year}</Link>.
+      </p>
+      <p>
+        <span role="img" aria-label="no holidays">
+          😥
+        </span>
+      </p>
+    </Main>
+  </>
+)
 
 export default NoHolidays

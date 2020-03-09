@@ -11,30 +11,28 @@ const NotFoundWrapper = styled(Main)`
   }
 `
 
-const NotFound = props => {
-  return (
-    <>
-      <Header />
-      <NotFoundWrapper>
-        {props.message ? (
-          <>
-            <p role="img" aria-label="not-found">
-              {props.emoji || '🤔'}
-            </p>
-            <p>{props.message}</p>
-          </>
-        ) : null}
-        {props.options ? (
-          <Dropdown
-            name={props.name}
-            placeholder={props.placeholder}
-            options={props.options}
-            onChangeHandler={props.onChangeHandler}
-          />
-        ) : null}
-      </NotFoundWrapper>
-    </>
-  )
-}
+const NotFound = props => (
+  <>
+    <Header />
+    <NotFoundWrapper>
+      {props.message ? (
+        <>
+          <p role="img" aria-label="not-found">
+            {props.emoji || '🤔'}
+          </p>
+          <p>{props.message}</p>
+        </>
+      ) : null}
+      {props.options ? (
+        <Dropdown
+          name={props.name}
+          placeholder={props.placeholder}
+          options={props.options}
+          onChangeHandler={props.onChangeHandler}
+        />
+      ) : null}
+    </NotFoundWrapper>
+  </>
+)
 
 export default NotFound

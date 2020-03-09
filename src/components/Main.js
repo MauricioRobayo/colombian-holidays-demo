@@ -19,12 +19,10 @@ const MainContentWrapper = styled.div`
   max-width: ${props => props.theme.maxWidth};
 `
 
-const Main = ({ children, className }) => {
-  return (
-    <MainWrapper className={className}>
-      <MainContentWrapper>{children}</MainContentWrapper>
-    </MainWrapper>
-  )
-}
+const Main = ({ children, className }) => (
+  <MainWrapper className={className}>
+    <MainContentWrapper>{children}</MainContentWrapper>
+  </MainWrapper>
+)
 
 export default Main
