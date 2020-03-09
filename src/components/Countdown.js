@@ -40,7 +40,7 @@ const CountDown = ({ inactive, current, date }) => (
     className={`${inactive ? 'inactive' : ''} ${current ? 'current' : ''}`}
   >
     <Link to={`/${date.replace(/-/g, '/')}`}>
-      <ReactTimeAgo date={date} locale="en" />
+      <ReactTimeAgo date={new Date(date)} locale="en" />
     </Link>
   </CountDownWrapper>
 )
