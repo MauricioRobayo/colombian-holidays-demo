@@ -12,26 +12,17 @@ const DayWrapper = styled(Main)`
   }
 `
 
-const Day = props => {
-  return (
-    <>
-      <Header {...props} />
-      <DayWrapper>
-        <PrettyDate date={props.date} />
-        {props.isHoliday ? (
-          <p className="celebrate">HOLIDAY</p>
-        ) : (
-          <p>NOT HOLIDAY</p>
-        )}
-        <span
-          role="img"
-          aria-label={props.isHoliday ? 'holiday' : 'not holiday'}
-        >
-          {props.isHoliday ? '😄' : '😥'}
-        </span>
-      </DayWrapper>
-    </>
-  )
-}
+const Day = ({ isHoliday, date, ...props }) => (
+  <>
+    <Header {...props} />
+    <DayWrapper>
+      <PrettyDate date={date} />
+      {isHoliday ? <p className="celebrate">HOLIDAY</p> : <p>NOT HOLIDAY</p>}
+      <span role="img" aria-label={isHoliday ? 'holiday' : 'not holiday'}>
+        {isHoliday ? '😄' : '😥'}
+      </span>
+    </DayWrapper>
+  </>
+)
 
 export default Day
