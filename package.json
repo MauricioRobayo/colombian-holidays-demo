@@ -31,7 +31,7 @@
     "eslint-config-prettier": "^6.0.0",
     "husky": "^4.0.3",
     "lint-staged": "^10.0.3",
-    "prettier": "^1.16.4",
+    "prettier": "^2.0.0",
     "semantic-release": "^17.0.0"
   },
   "description": "React app to get Colombian holidays for any given year",
