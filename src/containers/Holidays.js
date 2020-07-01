@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import NoMatch from '../components/NoMatch';
 import HolidaysList from '../components/HolidaysList';
 import Day from '../components/Day';
@@ -6,12 +6,11 @@ import NoHolidays from '../components/NoHolidays';
 import {
   getYears,
   getMonths,
-  getDays,
-  getHolidays,
   isValidYear,
   isValidMonth,
   isValidDay,
 } from '../utils/dateHelpers';
+import useHolidays from '../utils/useHolidays';
 
 const Holidays = ({ match, history }) => {
   const startYear = 1984;
@@ -21,41 +20,12 @@ const Holidays = ({ match, history }) => {
   const months = getMonths();
   const years = getYears(currentYear, startYear, yearsPastCurrentYear);
 
-  const [selectedDate, setSelectedDate] = useState({
-    year: match.params.year,
-    month: match.params.month,
-    day: match.params.day,
-  });
-
-  const [days, setDays] = useState(
-    getDays(match.params.year, match.params.month)
+  const { selectedDate, days, holidays, onChangeHandler } = useHolidays(
+    match.params.year,
+    match.params.month,
+    match.params.day,
+    history
   );
-  const [holidays, setHolidays] = useState(getHolidays(match.params.year));
-
-  useEffect(() => {
-    setSelectedDate({
-      year: match.params.year,
-      month: match.params.month,
-      day: match.params.day,
-    });
-    setHolidays(getHolidays(match.params.year));
-    setDays(getDays(match.params.year, match.params.month));
-  }, [match.params.year, match.params.month, match.params.day]);
-
-  const onChangeHandler = (event) => {
-    const { name, value } = event.target;
-    setSelectedDate({
-      ...selectedDate,
-      [name]: value,
-    });
-    const path =
-      name === 'year'
-        ? `/${value}`
-        : name === 'month'
-        ? `/${selectedDate.year}/${value}`
-        : `/${selectedDate.year}/${selectedDate.month}/${value}`;
-    history.push(path);
-  };
 
   if (
     (selectedDate.year &&
