@@ -1,25 +1,23 @@
 import { getAllHolidays } from 'pascua';
 
+export const monthsNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 export function getYears(currentYear, startYear, yearsPastCurrentYear) {
   const totalYears = currentYear - startYear + yearsPastCurrentYear + 1;
   return Array.from({ length: totalYears }, (_, k) => startYear + k);
-}
-
-export function getMonths() {
-  return [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
 }
 
 export function getDays(year, month) {
