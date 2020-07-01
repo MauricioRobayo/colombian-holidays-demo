@@ -13,6 +13,7 @@
     "styled-components": "^5.0.1"
   },
   "scripts": {
+    "format": "prettier --write .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
