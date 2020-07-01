@@ -27,17 +27,15 @@ const Holidays = ({ match, history }) => {
   const [days, setDays] = useState(
     getDays(match.params.year, match.params.month)
   );
-  const [holidays, setHolidays] = useState(
-    getHolidays(match.params.year, startYear, endYear)
-  );
+  const [holidays, setHolidays] = useState(getHolidays(match.params.year));
 
   useEffect(() => {
     setYear(match.params.year);
     setMonth(match.params.month);
     setDay(match.params.day);
-    setHolidays(getHolidays(match.params.year, startYear, endYear));
+    setHolidays(getHolidays(match.params.year));
     setDays(getDays(match.params.year, match.params.month));
-  }, [match.params.year, match.params.month, match.params.day, endYear]);
+  }, [match.params.year, match.params.month, match.params.day]);
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -58,8 +56,6 @@ const Holidays = ({ match, history }) => {
         : `/${year}/${month}/${value}`;
     history.push(path);
   };
-
-  console.log({ day, month, year });
 
   if (
     (year && !isValidYear(year, startYear, endYear)) ||
