@@ -21,46 +21,47 @@ const Holidays = ({ match, history }) => {
   const months = getMonths();
   const years = getYears(currentYear, startYear, yearsPastCurrentYear);
 
-  const [year, setYear] = useState(match.params.year);
-  const [month, setMonth] = useState(match.params.month);
-  const [day, setDay] = useState(match.params.day);
+  const [selectedDate, setSelectedDate] = useState({
+    year: match.params.year,
+    month: match.params.month,
+    day: match.params.day,
+  });
+
   const [days, setDays] = useState(
     getDays(match.params.year, match.params.month)
   );
   const [holidays, setHolidays] = useState(getHolidays(match.params.year));
 
   useEffect(() => {
-    setYear(match.params.year);
-    setMonth(match.params.month);
-    setDay(match.params.day);
+    setSelectedDate({
+      year: match.params.year,
+      month: match.params.month,
+      day: match.params.day,
+    });
     setHolidays(getHolidays(match.params.year));
     setDays(getDays(match.params.year, match.params.month));
   }, [match.params.year, match.params.month, match.params.day]);
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
-    if (name === 'year') {
-      setYear(value);
-    }
-    if (name === 'month') {
-      setMonth(value);
-    }
-    if (name === 'day') {
-      setDay(value);
-    }
+    setSelectedDate({
+      ...selectedDate,
+      [name]: value,
+    });
     const path =
       name === 'year'
         ? `/${value}`
         : name === 'month'
-        ? `/${year}/${value}`
-        : `/${year}/${month}/${value}`;
+        ? `/${selectedDate.year}/${value}`
+        : `/${selectedDate.year}/${selectedDate.month}/${value}`;
     history.push(path);
   };
 
   if (
-    (year && !isValidYear(year, startYear, endYear)) ||
-    (month && !isValidMonth(month)) ||
-    (day && !isValidDay(day, days))
+    (selectedDate.year &&
+      !isValidYear(selectedDate.year, startYear, endYear)) ||
+    (selectedDate.month && !isValidMonth(selectedDate.month)) ||
+    (selectedDate.day && !isValidDay(selectedDate.day, days))
   ) {
     const yearsOptions = {
       name: 'year',
@@ -77,14 +78,14 @@ const Holidays = ({ match, history }) => {
       />
     );
   }
-  if (day) {
-    const date = `${year}-${month}-${day}`;
+  if (selectedDate.day) {
+    const date = `${selectedDate.year}-${selectedDate.month}-${selectedDate.day}`;
     const isHoliday = holidays.find((holiday) => holiday.date === date);
     return (
       <Day
-        day={day}
-        month={month}
-        year={year}
+        day={selectedDate.day}
+        month={selectedDate.month}
+        year={selectedDate.year}
         days={days}
         months={months}
         years={years}
@@ -94,15 +95,17 @@ const Holidays = ({ match, history }) => {
       />
     );
   }
-  const currentHolidays = month
-    ? holidays.filter((holiday) => holiday.date.split('-')[1] === month)
+  const currentHolidays = selectedDate.month
+    ? holidays.filter(
+        (holiday) => holiday.date.split('-')[1] === selectedDate.month
+      )
     : holidays;
-  if (month && currentHolidays.length === 0) {
+  if (selectedDate.month && currentHolidays.length === 0) {
     return (
       <NoHolidays
-        day={day}
-        month={month}
-        year={year}
+        day={selectedDate.day}
+        month={selectedDate.month}
+        year={selectedDate.year}
         days={days}
         months={months}
         years={years}
@@ -112,9 +115,9 @@ const Holidays = ({ match, history }) => {
   }
   return (
     <HolidaysList
-      day={day}
-      month={month}
-      year={year}
+      day={selectedDate.day}
+      month={selectedDate.month}
+      year={selectedDate.year}
       days={days}
       months={months}
       years={years}
