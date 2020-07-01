@@ -1,9 +1,6 @@
 # Colombian holidays 🎆
 
-[![Colombian holidays](https://repository-images.githubusercontent.com/165450794/21307c80-36f3-11ea-8b2c-d9bd94531de6)](https://www.mauriciorobayo.com/colombian-holidays)
-
 [![Build Status](https://github.com/MauricioRobayo/colombian-holidays/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays/actions)
-[![Greenkeeper badge](https://badges.greenkeeper.io/MauricioRobayo/colombian-holidays.svg)](https://greenkeeper.io/)
 
 React app to get [Colombian holidays](https://mauriciorobayo.github.io/colombian-holidays) starting from 1984, year in which the current holiday scheme was [enforced](https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954).
 
