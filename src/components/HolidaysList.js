@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components/macro'
-import PrettyDate from './PrettyDate'
-import Countdown from './Countdown'
-import Header from './Header'
-import Main from './Main'
+import React from 'react';
+import styled from 'styled-components/macro';
+import PrettyDate from './PrettyDate';
+import Countdown from './Countdown';
+import Header from './Header';
+import Main from './Main';
 
 const HolidaysListWrapper = styled(Main)`
   height: auto;
@@ -31,8 +31,8 @@ const HolidaysListWrapper = styled(Main)`
       }
     }
   }
-`
-const date = new Date()
+`;
+const date = new Date();
 
 const HolidaysList = ({ holidays, ...props }) => (
   <>
@@ -41,14 +41,14 @@ const HolidaysList = ({ holidays, ...props }) => (
       <ul>
         {holidays.map((holiday, index, array) => {
           // Colombian timezone adjustment
-          const holidayDate = new Date(`${holiday.date}T05:00`)
-          const currentYear = holidayDate.getFullYear() === date.getFullYear()
-          const inactive = holidayDate < date && currentYear
-          let current = false
+          const holidayDate = new Date(`${holiday.date}T05:00`);
+          const currentYear = holidayDate.getFullYear() === date.getFullYear();
+          const inactive = holidayDate < date && currentYear;
+          let current = false;
           if (index) {
             const previousIsActive =
-              new Date(`${array[index - 1].date}T05:00`) < date
-            current = currentYear && inactive !== previousIsActive
+              new Date(`${array[index - 1].date}T05:00`) < date;
+            current = currentYear && inactive !== previousIsActive;
           }
           return (
             <li key={holiday.name} className={inactive ? 'inactive' : ''}>
@@ -60,11 +60,11 @@ const HolidaysList = ({ holidays, ...props }) => (
                 current={current}
               />
             </li>
-          )
+          );
         })}
       </ul>
     </HolidaysListWrapper>
   </>
-)
+);
 
-export default HolidaysList
+export default HolidaysList;

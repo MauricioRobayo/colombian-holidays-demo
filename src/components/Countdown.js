@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components/macro'
-import ReactTimeAgo from 'react-time-ago'
-import JavascriptTimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import styled from 'styled-components/macro';
+import ReactTimeAgo from 'react-time-ago';
+import JavascriptTimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+import { Link } from 'react-router-dom';
 
-JavascriptTimeAgo.locale(en)
+JavascriptTimeAgo.locale(en);
 
 const CountDownWrapper = styled.div`
   margin: 0.15rem auto;
@@ -33,7 +33,7 @@ const CountDownWrapper = styled.div`
       color: ${({ theme }) => theme.danger};
     }
   }
-`
+`;
 
 const CountDown = ({ inactive, current, date }) => (
   <CountDownWrapper
@@ -43,6 +43,6 @@ const CountDown = ({ inactive, current, date }) => (
       <ReactTimeAgo date={new Date(date)} locale="en" />
     </Link>
   </CountDownWrapper>
-)
+);
 
-export default CountDown
+export default CountDown;
