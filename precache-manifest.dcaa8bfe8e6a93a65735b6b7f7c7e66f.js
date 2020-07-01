@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9973c289f209ba41c21af172292c9970",
+    "revision": "6cf652a83155b0b69ecfbdd10f453f24",
     "url": "/colombian-holidays/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/colombian-holidays/static/js/2.ed559740.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e8b331b1ea3ecb50ce18",
-    "url": "/colombian-holidays/static/js/main.bf980de2.chunk.js"
+    "revision": "8c4f25901fb546c3eda5",
+    "url": "/colombian-holidays/static/js/main.6a2450d4.chunk.js"
   },
   {
     "revision": "69a4d7f0df3843c4558e",
