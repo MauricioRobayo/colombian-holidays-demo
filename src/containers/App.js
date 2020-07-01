@@ -1,9 +1,14 @@
-import React, { Fragment } from 'react'
-import { createGlobalStyle, ThemeProvider } from 'styled-components/macro'
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import HolidaysContainer from './Holidays'
-import Footer from '../components/Footer'
-import NoMatch from '../components/NoMatch'
+import React, { Fragment } from 'react';
+import { createGlobalStyle, ThemeProvider } from 'styled-components/macro';
+import {
+  HashRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
+import HolidaysContainer from './Holidays';
+import Footer from '../components/Footer';
+import NoMatch from '../components/NoMatch';
 
 const defaultTheme = {
   dark: '#444',
@@ -16,7 +21,7 @@ const defaultTheme = {
   success: '#00A591',
   danger: '#fe840e',
   maxWidth: '640px',
-}
+};
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -35,7 +40,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
-`
+`;
 
 const App = () => (
   <ThemeProvider theme={defaultTheme}>
@@ -50,7 +55,7 @@ const App = () => (
             component={HolidaysContainer}
           />
           <Route
-            render={props => (
+            render={(props) => (
               <NoMatch {...props} message="Something doesn't make sense." />
             )}
           />
@@ -59,6 +64,6 @@ const App = () => (
       </Fragment>
     </Router>
   </ThemeProvider>
-)
+);
 
-export default App
+export default App;

@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components/macro'
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const MainWrapper = styled.main`
   text-align: center;
@@ -14,15 +14,15 @@ const MainWrapper = styled.main`
   time::first-letter {
     text-transform: uppercase;
   }
-`
+`;
 const MainContentWrapper = styled.div`
-  max-width: ${props => props.theme.maxWidth};
-`
+  max-width: ${(props) => props.theme.maxWidth};
+`;
 
 const Main = ({ children, className }) => (
   <MainWrapper className={className}>
     <MainContentWrapper>{children}</MainContentWrapper>
   </MainWrapper>
-)
+);
 
-export default Main
+export default Main;

@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Header from './Header'
-import Main from './Main'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Header from './Header';
+import Main from './Main';
 
 const monthsNames = [
   'January',
@@ -16,7 +16,7 @@ const monthsNames = [
   'October',
   'November',
   'December',
-]
+];
 
 const NoHolidays = ({ month, year, ...props }) => (
   <>
@@ -33,6 +33,6 @@ const NoHolidays = ({ month, year, ...props }) => (
       </p>
     </Main>
   </>
-)
+);
 
-export default NoHolidays
+export default NoHolidays;

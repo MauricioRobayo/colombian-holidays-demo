@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import PrettyDate from './PrettyDate'
-import Header from './Header'
-import Main from './Main'
+import React from 'react';
+import styled from 'styled-components';
+import PrettyDate from './PrettyDate';
+import Header from './Header';
+import Main from './Main';
 
 const DayWrapper = styled(Main)`
   font-size: 1.5rem;
@@ -10,7 +10,7 @@ const DayWrapper = styled(Main)`
   .celebrate:before {
     content: '✨';
   }
-`
+`;
 
 const Day = ({ isHoliday, date, ...props }) => (
   <>
@@ -23,6 +23,6 @@ const Day = ({ isHoliday, date, ...props }) => (
       </span>
     </DayWrapper>
   </>
-)
+);
 
-export default Day
+export default Day;

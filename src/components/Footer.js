@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components/macro'
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.primary};
@@ -12,7 +12,7 @@ const StyledFooter = styled.footer`
   span {
     font-size: 2rem;
   }
-`
+`;
 
 const Footer = () => (
   <StyledFooter>
@@ -27,6 +27,6 @@ const Footer = () => (
       </span>
     </p>
   </StyledFooter>
-)
+);
 
-export default Footer
+export default Footer;

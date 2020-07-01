@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const DropdownWrapper = styled.div`
   position: relative;
@@ -38,7 +38,7 @@ const DropdownWrapper = styled.div`
       outline: 0;
     }
   }
-`
+`;
 
 const Dropdown = ({
   name,
@@ -65,6 +65,6 @@ const Dropdown = ({
       ))}
     </select>
   </DropdownWrapper>
-)
+);
 
-export default Dropdown
+export default Dropdown;
