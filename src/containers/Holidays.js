@@ -17,7 +17,6 @@ const Holidays = ({ match, history }) => {
   const currentYear = new Date().getFullYear();
   const yearsPastCurrentYear = 10;
   const endYear = currentYear + yearsPastCurrentYear;
-  const months = monthsNames;
   const years = getYears(currentYear, startYear, yearsPastCurrentYear);
 
   const { selectedDate, days, holidays, onChangeHandler } = useHolidays(
@@ -57,7 +56,7 @@ const Holidays = ({ match, history }) => {
         month={selectedDate.month}
         year={selectedDate.year}
         days={days}
-        months={months}
+        months={monthsNames}
         years={years}
         onChangeHandler={onChangeHandler}
         date={date}
@@ -77,7 +76,7 @@ const Holidays = ({ match, history }) => {
         month={selectedDate.month}
         year={selectedDate.year}
         days={days}
-        months={months}
+        months={monthsNames}
         years={years}
         onChangeHandler={onChangeHandler}
       />
@@ -89,7 +88,7 @@ const Holidays = ({ match, history }) => {
       month={selectedDate.month}
       year={selectedDate.year}
       days={days}
-      months={months}
+      months={monthsNames}
       years={years}
       onChangeHandler={onChangeHandler}
       holidays={currentHolidays}
