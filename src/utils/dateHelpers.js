@@ -31,11 +31,12 @@ export function getDays(year, month) {
   return Array.from({ length: totalDays }, (_, k) => k + 1);
 }
 
-export function getHolidays(year, startYear, endYear) {
-  if (!isValidYear(year, startYear, endYear)) {
+export function getHolidays(year) {
+  try {
+    return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
+  } catch {
     return [];
   }
-  return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
 }
 
 export function isValidYear(year, startYear, endYear) {
