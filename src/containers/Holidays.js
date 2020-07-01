@@ -87,7 +87,9 @@ class HolidaysContainer extends Component {
       };
       return (
         <NoMatch
-          {...yearsOptions}
+          name={yearsOptions.name}
+          placeholder={yearsOptions.placeholder}
+          options={yearsOptions.options}
           message="It seems like we don't have that information."
           onChangeHandler={this.onChangeHandler}
         />
@@ -100,7 +102,12 @@ class HolidaysContainer extends Component {
       );
       return (
         <Day
-          {...this.state}
+          day={this.state.day}
+          month={this.state.month}
+          year={this.state.year}
+          days={this.state.days}
+          months={this.state.months}
+          years={this.state.years}
           onChangeHandler={this.onChangeHandler}
           date={date}
           isHoliday={isHoliday}
@@ -114,12 +121,25 @@ class HolidaysContainer extends Component {
       : this.state.holidays;
     if (this.state.month && holidays.length === 0) {
       return (
-        <NoHolidays {...this.state} onChangeHandler={this.onChangeHandler} />
+        <NoHolidays
+          day={this.state.day}
+          month={this.state.month}
+          year={this.state.year}
+          days={this.state.days}
+          months={this.state.months}
+          years={this.state.years}
+          onChangeHandler={this.onChangeHandler}
+        />
       );
     }
     return (
       <HolidaysList
-        {...this.state}
+        day={this.state.day}
+        month={this.state.month}
+        year={this.state.year}
+        days={this.state.days}
+        months={this.state.months}
+        years={this.state.years}
         onChangeHandler={this.onChangeHandler}
         holidays={holidays}
       />

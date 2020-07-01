@@ -18,9 +18,25 @@ const monthsNames = [
   'December',
 ];
 
-const NoHolidays = ({ month, year, ...props }) => (
+const NoHolidays = ({
+  month,
+  year,
+  day,
+  days,
+  months,
+  years,
+  onChangeHandler,
+}) => (
   <>
-    <Header {...props} />
+    <Header
+      day={day}
+      month={month}
+      year={year}
+      days={days}
+      months={months}
+      years={years}
+      onChangeHandler={onChangeHandler}
+    />
     <Main>
       <p>
         No holidays during {monthsNames[parseInt(month, 10) - 1]}{' '}

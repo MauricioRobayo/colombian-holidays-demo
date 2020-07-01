@@ -11,7 +11,15 @@ const NotFoundWrapper = styled(Main)`
   }
 `;
 
-const NotFound = ({ message, emoji, options, ...props }) => (
+const NoMatch = ({
+  message,
+  emoji,
+  name,
+  placeholder,
+  selected,
+  options,
+  onChangeHandler,
+}) => (
   <>
     <Header />
     <NotFoundWrapper>
@@ -23,9 +31,17 @@ const NotFound = ({ message, emoji, options, ...props }) => (
           <p>{message}</p>
         </>
       ) : null}
-      {options ? <Dropdown {...props} /> : null}
+      {options ? (
+        <Dropdown
+          name={name}
+          placeholder={placeholder}
+          selected={selected}
+          options={options}
+          onChangeHandler={onChangeHandler}
+        />
+      ) : null}
     </NotFoundWrapper>
   </>
 );
 
-export default NotFound;
+export default NoMatch;

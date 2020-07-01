@@ -34,9 +34,26 @@ const HolidaysListWrapper = styled(Main)`
 `;
 const date = new Date();
 
-const HolidaysList = ({ holidays, ...props }) => (
+const HolidaysList = ({
+  holidays,
+  day,
+  month,
+  year,
+  days,
+  months,
+  years,
+  onChangeHandler,
+}) => (
   <>
-    <Header {...props} />
+    <Header
+      day={day}
+      month={month}
+      year={year}
+      days={days}
+      months={months}
+      years={years}
+      onChangeHandler={onChangeHandler}
+    />
     <HolidaysListWrapper>
       <ul>
         {holidays.map((holiday, index, array) => {
