@@ -1,6 +1,7 @@
 # Colombian holidays 🎆
 
 [![Build Status](https://github.com/MauricioRobayo/colombian-holidays/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays/actions)
+[![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays)
 
 React app to get [Colombian holidays](https://mauriciorobayo.github.io/colombian-holidays) starting from 1984, year in which the current holiday scheme was [enforced](https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954).
 
