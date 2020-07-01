@@ -12,9 +12,27 @@ const DayWrapper = styled(Main)`
   }
 `;
 
-const Day = ({ isHoliday, date, ...props }) => (
+const Day = ({
+  isHoliday,
+  date,
+  day,
+  month,
+  year,
+  days,
+  months,
+  years,
+  onChangeHandler,
+}) => (
   <>
-    <Header {...props} />
+    <Header
+      day={day}
+      month={month}
+      year={year}
+      days={days}
+      months={months}
+      years={years}
+      onChangeHandler={onChangeHandler}
+    />
     <DayWrapper>
       <PrettyDate date={date} />
       {isHoliday ? <p className="celebrate">HOLIDAY</p> : <p>NOT HOLIDAY</p>}
