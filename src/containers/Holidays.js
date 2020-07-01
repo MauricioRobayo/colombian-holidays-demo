@@ -5,7 +5,7 @@ import Day from '../components/Day';
 import NoHolidays from '../components/NoHolidays';
 import {
   getYears,
-  getMonths,
+  monthsNames,
   isValidYear,
   isValidMonth,
   isValidDay,
@@ -17,7 +17,7 @@ const Holidays = ({ match, history }) => {
   const currentYear = new Date().getFullYear();
   const yearsPastCurrentYear = 10;
   const endYear = currentYear + yearsPastCurrentYear;
-  const months = getMonths();
+  const months = monthsNames;
   const years = getYears(currentYear, startYear, yearsPastCurrentYear);
 
   const { selectedDate, days, holidays, onChangeHandler } = useHolidays(

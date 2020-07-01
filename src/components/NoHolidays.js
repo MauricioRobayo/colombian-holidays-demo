@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Main from './Main';
-import { getMonths } from '../utils/dateHelpers';
-
-const monthsNames = getMonths();
+import { monthsNames } from '../utils/dateHelpers';
 
 const NoHolidays = ({
   month,
