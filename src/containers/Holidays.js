@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import NoMatch from '../components/NoMatch';
 import HolidaysList from '../components/HolidaysList';
 import Day from '../components/Day';
@@ -13,138 +13,119 @@ import {
   isValidDay,
 } from '../utils/dateHelpers';
 
-class HolidaysContainer extends Component {
-  startYear = 1984;
-  currentYear = new Date().getFullYear();
-  yearsPastCurrentYear = 10;
-  endYear = this.currentYear + this.yearsPastCurrentYear;
-  state = {
-    year: this.props.match.params.year,
-    month: this.props.match.params.month,
-    day: this.props.match.params.day,
-    years: getYears(
-      this.currentYear,
-      this.startYear,
-      this.yearsPastCurrentYear
-    ),
-    months: getMonths(),
-    days: getDays(this.props.match.params.year, this.props.match.params.month),
-    holidays: getHolidays(
-      this.props.match.params.year,
-      this.startYear,
-      this.endYear
-    ),
-  };
+const Holidays = ({ match, history }) => {
+  const startYear = 1984;
+  const currentYear = new Date().getFullYear();
+  const yearsPastCurrentYear = 10;
+  const endYear = currentYear + yearsPastCurrentYear;
+  const months = getMonths();
+  const years = getYears(currentYear, startYear, yearsPastCurrentYear);
 
-  onChangeHandler = (event) => {
+  const [year, setYear] = useState(match.params.year);
+  const [month, setMonth] = useState(match.params.month);
+  const [day, setDay] = useState(match.params.day);
+  const [days, setDays] = useState(
+    getDays(match.params.year, match.params.month)
+  );
+  const [holidays, setHolidays] = useState(
+    getHolidays(match.params.year, startYear, endYear)
+  );
+
+  useEffect(() => {
+    setYear(match.params.year);
+    setMonth(match.params.month);
+    setDay(match.params.day);
+    setHolidays(getHolidays(match.params.year, startYear, endYear));
+    setDays(getDays(match.params.year, match.params.month));
+  }, [match.params.year, match.params.month, match.params.day, endYear]);
+
+  const onChangeHandler = (event) => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
+    if (name === 'year') {
+      setYear(value);
+    }
+    if (name === 'month') {
+      setMonth(value);
+    }
+    if (name === 'day') {
+      setDay(value);
+    }
     const path =
       name === 'year'
         ? `/${value}`
         : name === 'month'
-        ? `/${this.state.year}/${value}`
-        : `/${this.state.year}/${this.state.month}/${value}`;
-    this.props.history.push(path);
+        ? `/${year}/${value}`
+        : `/${year}/${month}/${value}`;
+    history.push(path);
   };
 
-  componentDidUpdate(prevProps) {
-    if (this.props.match.params.year !== prevProps.match.params.year) {
-      this.setState({
-        year: this.props.match.params.year,
-        holidays: this.getHolidays(this.props.match.params.year),
-      });
-    }
-    if (this.props.match.params.month !== prevProps.match.params.month) {
-      this.setState({
-        month: this.props.match.params.month,
-        days: getDays(
-          this.props.match.params.year,
-          this.props.match.params.month
-        ),
-      });
-    }
-    if (this.props.match.params.day !== prevProps.match.params.day) {
-      this.setState({
-        day: this.props.match.params.day,
-      });
-    }
-  }
+  console.log({ day, month, year });
 
-  render() {
-    if (
-      (this.state.year &&
-        !isValidYear(this.state.year, this.startYear, this.endYear)) ||
-      (this.state.month && !isValidMonth(this.state.month)) ||
-      (this.state.day && !isValidDay(this.state.day, this.state.days))
-    ) {
-      const yearsOptions = {
-        name: 'year',
-        placeholder: 'año',
-        options: this.state.years,
-      };
-      return (
-        <NoMatch
-          name={yearsOptions.name}
-          placeholder={yearsOptions.placeholder}
-          options={yearsOptions.options}
-          message="It seems like we don't have that information."
-          onChangeHandler={this.onChangeHandler}
-        />
-      );
-    }
-    if (this.state.day) {
-      const date = `${this.state.year}-${this.state.month}-${this.state.day}`;
-      const isHoliday = this.state.holidays.find(
-        (holiday) => holiday.date === date
-      );
-      return (
-        <Day
-          day={this.state.day}
-          month={this.state.month}
-          year={this.state.year}
-          days={this.state.days}
-          months={this.state.months}
-          years={this.state.years}
-          onChangeHandler={this.onChangeHandler}
-          date={date}
-          isHoliday={isHoliday}
-        />
-      );
-    }
-    const holidays = this.state.month
-      ? this.state.holidays.filter(
-          (holiday) => holiday.date.split('-')[1] === this.state.month
-        )
-      : this.state.holidays;
-    if (this.state.month && holidays.length === 0) {
-      return (
-        <NoHolidays
-          day={this.state.day}
-          month={this.state.month}
-          year={this.state.year}
-          days={this.state.days}
-          months={this.state.months}
-          years={this.state.years}
-          onChangeHandler={this.onChangeHandler}
-        />
-      );
-    }
+  if (
+    (year && !isValidYear(year, startYear, endYear)) ||
+    (month && !isValidMonth(month)) ||
+    (day && !isValidDay(day, days))
+  ) {
+    const yearsOptions = {
+      name: 'year',
+      placeholder: 'years',
+      options: years,
+    };
     return (
-      <HolidaysList
-        day={this.state.day}
-        month={this.state.month}
-        year={this.state.year}
-        days={this.state.days}
-        months={this.state.months}
-        years={this.state.years}
-        onChangeHandler={this.onChangeHandler}
-        holidays={holidays}
+      <NoMatch
+        name={yearsOptions.name}
+        placeholder={yearsOptions.placeholder}
+        options={yearsOptions.options}
+        message="It seems like we don't have that information."
+        onChangeHandler={onChangeHandler}
       />
     );
   }
-}
+  if (day) {
+    const date = `${year}-${month}-${day}`;
+    const isHoliday = holidays.find((holiday) => holiday.date === date);
+    return (
+      <Day
+        day={day}
+        month={month}
+        year={year}
+        days={days}
+        months={months}
+        years={years}
+        onChangeHandler={onChangeHandler}
+        date={date}
+        isHoliday={isHoliday}
+      />
+    );
+  }
+  const currentHolidays = month
+    ? holidays.filter((holiday) => holiday.date.split('-')[1] === month)
+    : holidays;
+  if (month && currentHolidays.length === 0) {
+    return (
+      <NoHolidays
+        day={day}
+        month={month}
+        year={year}
+        days={days}
+        months={months}
+        years={years}
+        onChangeHandler={onChangeHandler}
+      />
+    );
+  }
+  return (
+    <HolidaysList
+      day={day}
+      month={month}
+      year={year}
+      days={days}
+      months={months}
+      years={years}
+      onChangeHandler={onChangeHandler}
+      holidays={currentHolidays}
+    />
+  );
+};
 
-export default HolidaysContainer;
+export default Holidays;
