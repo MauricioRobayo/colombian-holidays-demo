@@ -1,4 +1,4 @@
-import { getAllHolidays } from 'pascua';
+import getColombianHolidays from 'colombian-holidays';
 
 export const monthsNames = [
   'January',
@@ -31,7 +31,9 @@ export function getDays(year, month) {
 
 export function getHolidays(year) {
   try {
-    return getAllHolidays(year).sort((a, b) => a.date.localeCompare(b.date));
+    return getColombianHolidays(year).sort((a, b) =>
+      a.date.localeCompare(b.date)
+    );
   } catch {
     return [];
   }
