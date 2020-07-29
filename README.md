@@ -1,7 +1,7 @@
-# Colombian holidays 🎆
+# Colombian holidays Demo 🎆
 
-[![Build Status](https://github.com/MauricioRobayo/colombian-holidays/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays/actions)
-[![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays)
+[![Build Status](https://github.com/MauricioRobayo/colombian-holidays-demo/workflows/build%20and%20deploy/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays-demo/actions)
+[![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays-demo/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays-demo)
 
 React app to showcase the [colombian-holidays](https://github.com/mauriciorobayo/colombian-holidays) package.
 
@@ -14,7 +14,7 @@ React app to showcase the [colombian-holidays](https://github.com/mauriciorobayo
 1. Clone the repository and `cd` into it:
 
 ```sh
-git clone https://github.com/MauricioRobayo/colombian-holidays.git
+git clone https://github.com/MauricioRobayo/colombian-holidays-demo.git
 cd colombian-holidays
 ```
 
