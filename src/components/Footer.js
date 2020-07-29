@@ -6,6 +6,7 @@ const StyledFooter = styled.footer`
   color: ${({ theme }) => theme.white};
   padding: 2rem 1rem 1rem;
   margin-top: auto;
+  font-size: 0.75rem;
   a {
     color: ${({ theme }) => theme.white};
   }
@@ -17,9 +18,18 @@ const StyledFooter = styled.footer`
 const Footer = () => (
   <StyledFooter>
     <p>
+      Check out the{' '}
       <a href="https://github.com/mauriciorobayo/colombian-holidays">
-        This is an open source project.
-      </a>
+        colombian-holidays
+      </a>{' '}
+      npm package to calculate colombian holidays.
+    </p>
+    <p>
+      This is an{' '}
+      <a href="https://github.com/mauriciorobayo/colombian-holidays-demo">
+        open source
+      </a>{' '}
+      project.
     </p>
     <p>
       <span role="img" aria-label="Fireworks">
