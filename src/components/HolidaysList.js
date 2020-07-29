@@ -56,9 +56,9 @@ const HolidaysList = ({
     />
     <HolidaysListWrapper>
       <ul>
-        {holidays.map((holiday, index, array) => {
+        {holidays.map(({ celebrationDate, name }, index, array) => {
           // Colombian timezone adjustment
-          const holidayDate = new Date(`${holiday.date}T05:00`);
+          const holidayDate = new Date(`${celebrationDate}T05:00`);
           const currentYear = holidayDate.getFullYear() === date.getFullYear();
           const inactive = holidayDate < date && currentYear;
           let current = false;
@@ -68,11 +68,11 @@ const HolidaysList = ({
             current = currentYear && inactive !== previousIsActive;
           }
           return (
-            <li key={holiday.name} className={inactive ? 'inactive' : ''}>
-              <h3>{holiday.name}</h3>
-              <PrettyDate date={holiday.date} />
+            <li key={name} className={inactive ? 'inactive' : ''}>
+              <h3>{name}</h3>
+              <PrettyDate date={celebrationDate} />
               <Countdown
-                date={holiday.date}
+                date={celebrationDate}
                 inactive={inactive}
                 current={current}
               />

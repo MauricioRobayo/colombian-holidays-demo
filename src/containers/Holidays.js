@@ -49,7 +49,9 @@ const Holidays = ({ match, history }) => {
   }
   if (selectedDate.day) {
     const date = `${selectedDate.year}-${selectedDate.month}-${selectedDate.day}`;
-    const isHoliday = holidays.find((holiday) => holiday.date === date);
+    const isHoliday = holidays.find(
+      (holiday) => holiday.celebrationDate === date
+    );
     return (
       <Day
         day={selectedDate.day}
@@ -66,7 +68,8 @@ const Holidays = ({ match, history }) => {
   }
   const currentHolidays = selectedDate.month
     ? holidays.filter(
-        (holiday) => holiday.date.split('-')[1] === selectedDate.month
+        (holiday) =>
+          holiday.celebrationDate.split('-')[1] === selectedDate.month
       )
     : holidays;
   if (selectedDate.month && currentHolidays.length === 0) {
