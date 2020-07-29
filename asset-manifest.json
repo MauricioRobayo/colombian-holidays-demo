@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/colombian-holidays/static/js/main.6a2450d4.chunk.js",
-    "main.js.map": "/colombian-holidays/static/js/main.6a2450d4.chunk.js.map",
-    "runtime-main.js": "/colombian-holidays/static/js/runtime-main.6785eb90.js",
-    "runtime-main.js.map": "/colombian-holidays/static/js/runtime-main.6785eb90.js.map",
-    "static/js/2.ed559740.chunk.js": "/colombian-holidays/static/js/2.ed559740.chunk.js",
-    "static/js/2.ed559740.chunk.js.map": "/colombian-holidays/static/js/2.ed559740.chunk.js.map",
-    "index.html": "/colombian-holidays/index.html",
-    "precache-manifest.dcaa8bfe8e6a93a65735b6b7f7c7e66f.js": "/colombian-holidays/precache-manifest.dcaa8bfe8e6a93a65735b6b7f7c7e66f.js",
-    "service-worker.js": "/colombian-holidays/service-worker.js",
-    "static/js/2.ed559740.chunk.js.LICENSE.txt": "/colombian-holidays/static/js/2.ed559740.chunk.js.LICENSE.txt"
+    "main.js": "/colombian-holidays-demo/static/js/main.229edd04.chunk.js",
+    "main.js.map": "/colombian-holidays-demo/static/js/main.229edd04.chunk.js.map",
+    "runtime-main.js": "/colombian-holidays-demo/static/js/runtime-main.c273358d.js",
+    "runtime-main.js.map": "/colombian-holidays-demo/static/js/runtime-main.c273358d.js.map",
+    "static/js/2.a96a0631.chunk.js": "/colombian-holidays-demo/static/js/2.a96a0631.chunk.js",
+    "static/js/2.a96a0631.chunk.js.map": "/colombian-holidays-demo/static/js/2.a96a0631.chunk.js.map",
+    "index.html": "/colombian-holidays-demo/index.html",
+    "precache-manifest.c82d2a8c799adf7ba9e39611c0dc516f.js": "/colombian-holidays-demo/precache-manifest.c82d2a8c799adf7ba9e39611c0dc516f.js",
+    "service-worker.js": "/colombian-holidays-demo/service-worker.js",
+    "static/js/2.a96a0631.chunk.js.LICENSE.txt": "/colombian-holidays-demo/static/js/2.a96a0631.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.6785eb90.js",
-    "static/js/2.ed559740.chunk.js",
-    "static/js/main.6a2450d4.chunk.js"
+    "static/js/runtime-main.c273358d.js",
+    "static/js/2.a96a0631.chunk.js",
+    "static/js/main.229edd04.chunk.js"
   ]
 }
