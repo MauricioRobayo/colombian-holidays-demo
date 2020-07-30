@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://www.mauriciorobayo.com/colombian-holidays-demo",
   "dependencies": {
-    "colombian-holidays": "^1.4.0",
+    "colombian-holidays": "^1.5.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^6.0.0",
@@ -26,7 +26,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^9.1.2",
+    "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
     "eslint-config-prettier": "^6.11.0",
     "husky": "^4.2.5",
