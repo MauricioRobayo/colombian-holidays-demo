@@ -4,6 +4,7 @@ import PrettyDate from './PrettyDate';
 import Countdown from './Countdown';
 import Header from './Header';
 import Main from './Main';
+import { Link } from 'react-router-dom';
 
 const HolidaysListWrapper = styled(Main)`
   height: auto;
@@ -17,14 +18,28 @@ const HolidaysListWrapper = styled(Main)`
     li {
       padding: 0.75em;
       border-bottom: 1px solid ${({ theme }) => theme.greylighter};
+      a {
+        text-decoration: none;
+        color: ${({ theme }) => theme.dark};
+      }
       h3 {
         margin: 0 0 0.25rem;
       }
+      &:hover {
+        transition: background-color 0.25s;
+        background-color: ${({
+          theme: {
+            primary: { h, s, l },
+          },
+        }) => `hsla(${h},${s}%,${l + 40}%, 0.25)`};
+      }
     }
     li.inactive {
-      padding: 0.25rem 0.75rem 0.15rem;
-      color: ${({ theme }) => theme.inactiveFG};
+      padding: 0.45rem 0.75rem 0.15rem;
       font-size: 0.85rem;
+      a {
+        color: ${({ theme }) => theme.inactiveFG};
+      }
       h3 {
         font-weight: normal;
         margin-bottom: 0.15rem;
@@ -57,9 +72,10 @@ const HolidaysList = ({
     <HolidaysListWrapper>
       <ul>
         {holidays.map(({ celebrationDate, name }, index, array) => {
-          // Colombian timezone adjustment
-          const holidayDate = new Date(`${celebrationDate}T05:00`);
-          const currentYear = holidayDate.getFullYear() === date.getFullYear();
+          // create a local date
+          const holidayDate = new Date(celebrationDate);
+          const currentYear =
+            holidayDate.getUTCFullYear() === date.getUTCFullYear();
           const inactive = holidayDate < date && currentYear;
           let current = false;
           if (index) {
@@ -69,13 +85,17 @@ const HolidaysList = ({
           }
           return (
             <li key={name} className={inactive ? 'inactive' : ''}>
-              <h3>{name}</h3>
-              <PrettyDate date={celebrationDate} />
-              <Countdown
-                date={celebrationDate}
-                inactive={inactive}
-                current={current}
-              />
+              <Link to={`/${celebrationDate.replace(/-/g, '/')}`}>
+                <h3>{name}</h3>
+                <PrettyDate date={celebrationDate} />
+                {currentYear && (
+                  <Countdown
+                    date={celebrationDate}
+                    inactive={inactive}
+                    current={current}
+                  />
+                )}
+              </Link>
             </li>
           );
         })}
