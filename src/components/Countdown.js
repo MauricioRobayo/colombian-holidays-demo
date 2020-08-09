@@ -32,7 +32,7 @@ const CountDown = ({ inactive, current, date }) => (
   <CountDownWrapper
     className={`${inactive ? 'inactive' : ''} ${current ? 'current' : ''}`}
   >
-    <ReactTimeAgo date={new Date(date)} locale="en" />
+    <ReactTimeAgo date={date} locale="en" />
   </CountDownWrapper>
 );
 

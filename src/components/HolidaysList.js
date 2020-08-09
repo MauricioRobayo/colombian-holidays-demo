@@ -72,8 +72,13 @@ const HolidaysList = ({
     <HolidaysListWrapper>
       <ul>
         {holidays.map(({ celebrationDate, name }, index, array) => {
-          // create a local date
-          const holidayDate = new Date(celebrationDate);
+          // When the time zone offset is absent,
+          // date-only forms are interpreted as a UTC time
+          // and date-time forms are interpreted as local time.
+          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse
+          // Date.parse('2011-10-10') => date-only form = UTC time
+          // Date.parse('2011-10-10T00:00') => date-time form = Local time
+          const holidayDate = new Date(`${celebrationDate}T00:00`);
           const currentYear =
             holidayDate.getUTCFullYear() === date.getUTCFullYear();
           const inactive = holidayDate < date && currentYear;
@@ -90,7 +95,7 @@ const HolidaysList = ({
                 <PrettyDate date={celebrationDate} />
                 {currentYear && (
                   <Countdown
-                    date={celebrationDate}
+                    date={holidayDate}
                     inactive={inactive}
                     current={current}
                   />
