@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/colombian-holidays-demo/precache-manifest.5a4c4e610c1fe3acfdd34eee47f11b64.js"
+  "/colombian-holidays-demo/precache-manifest.73bd10da91243998ddea4e19c773c7a0.js"
 );
 
 self.addEventListener('message', (event) => {
