@@ -33,7 +33,7 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "react-time-ago": "^6.0.0",
-    "semantic-release": "^17.4.7"
+    "semantic-release": "^19.0.5"
   },
   "description": "React app to get Colombian holidays for any given year",
   "main": "index.js",
