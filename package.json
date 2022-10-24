@@ -29,11 +29,11 @@
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
     "eslint-config-prettier": "^6.11.0",
-    "husky": "^4.2.5",
+    "husky": "^4.3.8",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "react-time-ago": "^6.0.0",
-    "semantic-release": "^17.1.1"
+    "semantic-release": "^17.4.7"
   },
   "description": "React app to get Colombian holidays for any given year",
   "main": "index.js",
