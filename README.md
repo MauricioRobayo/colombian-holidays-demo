@@ -7,7 +7,7 @@ React app to showcase the [colombian-holidays](https://github.com/mauriciorobayo
 
 ## Live Demo
 
-[Colombian Holidays](https://www.mauriciorobayo.com/colombian-holidays-demo)
+[Colombian Holidays](https://mauriciorobayo.github.io/colombian-holidays-demo)
 
 ## Getting Started
 
